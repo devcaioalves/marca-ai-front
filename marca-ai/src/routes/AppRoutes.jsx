@@ -1,18 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/auth/Login.jsx";
+import Home from "../pages/Home.jsx";
 
 export default function AppRoutes() {
     return (
         <Routes>
             {/* Rotas públicas */}
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
             {/*<Route path="/criar-conta" element={<CreateAccount />} />*/}
             {/*<Route path="/forgot-password" element={<ForgotPassword />} />*/}
             {/*<Route path="/receive-code" element={<ReceiveCode />} />*/}
             {/*<Route path="/alter-password" element={<AlterPassword />} />*/}
 
             {/* Rotas privadas */}
+            
             {/*<Route element={<PrivateRoute />}>*/}
             {/*    <Route path="/home" element={<Home />} />*/}
             {/*    <Route path="/create-announce" element={<CreateAnnounce />} />*/}

@@ -1,7 +1,28 @@
+@charset "UTF-8";
+
+:root {
+    /*Cores principais*/
+    --preto-principal: #0B0B0B;
+    --marrom-escuro: #1A1412;
+    --marrom-gradiente: #2A1E1B;
+
+    /*Dourado*/
+    --dourado: #D4AF37;
+    --dourado-claro: #F1D27A;
+    --dourado-principal: #C9A227;
+
+    /*Neutro*/
+    --branco: #FFFFFF;
+    --cinza-claro: #CFCFCF;
+    --cinza-texto: #A8A8A8;
+
+    /*Fontes*/
+    --font-titulo: 'Playfair Display', serif;
+    --font-subtitulos: 'Poppins', sans-serif;
+}
+
 html, body {
-
     padding: 0;
-
     margin: 0;
-
+    box-sizing: border-box;
 }
