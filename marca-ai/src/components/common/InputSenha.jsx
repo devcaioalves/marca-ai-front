@@ -3,7 +3,11 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-export default function InputPassword({ value, onChange }) {
+export default function InputSenha({
+    value,
+    onChange,
+    placeholder = "Informe sua senha" // valor padrão
+}) {
     const [mostrarSenha, setMostrarSenha] = useState(false);
 
     return (
@@ -11,14 +15,17 @@ export default function InputPassword({ value, onChange }) {
             <input
                 type={mostrarSenha ? "text" : "password"}
                 className="input"
-                placeholder="Informe sua senha"
+                placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
             />
 
-            <span className="eye" onClick={() => setMostrarSenha(!mostrarSenha)}>
-        <FontAwesomeIcon icon={mostrarSenha ? faEye : faEyeSlash} />
-      </span>
+            <span
+                className="eye"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+            >
+                <FontAwesomeIcon icon={mostrarSenha ? faEye : faEyeSlash} />
+            </span>
         </div>
     );
 }

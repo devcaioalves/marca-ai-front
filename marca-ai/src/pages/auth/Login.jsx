@@ -1,45 +1,46 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "../../styles/login.css";
 import bg from "../../assets/background.jpg";
-import InputPassword from "../../components/common/InputPassword";
+import InputSenha from "../../components/common/InputSenha";
 import logo from "../../assets/logo.png";
 
+import { useAuth } from "../../context/AuthContext";
+
+
 export default function Login() {
-    const [email, setEmail] = useState("");
+    const [identificador, setIdentificador] = useState("");
     const [senha, setSenha] = useState("");
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-    //const { login } = useAuth();
+    const { login } = useAuth();
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if (!email || !senha) {
-            // toast.error("Preencha email e senha.");
+        if (!identificador || !senha) {
+            toast.error("Preencha email/telefone e senha.");
             return;
         }
 
         try {
             setLoading(true);
 
-            // // 🔐 CHAMA O BACKEND
-            // const { data } = await api.post(
-            //     "/br/com/ifmarket/usermanagent/v1/login",
-            //     { identificador: email, senha }
-            // );
+            await login(identificador, senha);
 
-            // ✅ SALVA USUÁRIO REAL (SEM SENHA)
-            //login(data);
-
-            // toast.success("Login realizado com sucesso!");
+            toast.success("Login realizado com sucesso!");
             navigate("/home");
 
-        } catch (err) {
-            console.error(err);
-            // toast.error("Credenciais inválidas");
+        } catch (error) {
+            const data = error.response?.data;
+
+            const mensagem =
+                data?.message || "Credenciais inválidas";
+
+            toast.error(mensagem);
         } finally {
             setLoading(false);
         }
@@ -64,21 +65,21 @@ export default function Login() {
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
                             <input
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={identificador}
+                                onChange={(e) => setIdentificador(e.target.value)}
                                 placeholder="Informe seu e-mail ou telefone"
                             />
                         </div>
 
                         <div className="input-group">
-                            <InputPassword
+                            <InputSenha
                                 value={senha}
                                 onChange={setSenha}
                             />
 
                             <span
                                 className="forgot-pass"
-                                onClick={() => navigate("/forgot-password")}
+                                onClick={() => navigate("/esqueceu-senha")}
                             >
                                 Esqueceu sua senha?
                             </span>
