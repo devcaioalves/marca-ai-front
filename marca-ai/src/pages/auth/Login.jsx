@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../styles/login.css";
+import bg from "../../assets/background.jpg";
 import InputPassword from "../../components/common/InputPassword";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/colab.png";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -45,61 +46,63 @@ export default function Login() {
     }
 
     return (
-        <div className="login-container">
+        <div
+            className="login-container"
+            style={{
+                backgroundImage: `url(${bg})`,
+            }}
+        >
+            {/* overlay escuro */}
+            <div className="overlay"></div>
 
-            <div className="logo-container">
+            <div className="content fade-in">
+                <div className="logo-container">
+                    <img src={logo} alt="Logo" className="login-logo" />
+                </div>
 
-                <img src={logo} alt="Logo Letreiro" className="login-logo" />
+                <div className="login-card">
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-group">
+                            <label>E-mail ou Telefone</label>
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Informe seu e-mail ou telefone"
+                            />
+                        </div>
 
-            </div>
+                        <div className="input-group">
+                            <label>Senha</label>
 
-            <div className="login-card">
+                            <InputPassword
+                                value={senha}
+                                onChange={setSenha}
+                            />
 
-                <form onSubmit={handleSubmit}>
+                            <span
+                                className="forgot-pass"
+                                onClick={() => navigate("/forgot-password")}
+                            >
+                                Esqueceu sua senha?
+                            </span>
+                        </div>
 
-                    <div className="input-group">
-                        <label>E-mail ou Telefone</label>
-                        <input
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Informe seu e-mail ou telefone"
-                        />
-                    </div>
-
-                    <div className="input-group">
-                        <label>Senha</label>
-
-                        <InputPassword
-                            value={senha}
-                            onChange={setSenha}
-                        />
-
-                        <a
-                            type="button"
-                            className="forgot-pass"
-                            onClick={() => navigate("/forgot-password")}
+                        <button
+                            type="submit"
+                            className="btn btn-gray"
+                            disabled={loading}
                         >
-                            Esqueceu sua senha?
-                        </a>
-                    </div>
+                            {loading ? "Entrando..." : "Entrar"}
+                        </button>
 
-                    <button
-                        type="submit"
-                        className="btn btn-gray"
-                        disabled={loading}
-                    >
-                        {loading ? "Entrando..." : "Entrar"}
-                    </button>
-
-                    <a
-                        type="button"
-                        className="create-account"
-                        onClick={() => navigate("/criar-conta")}
-                    >
-                        Novo por aqui? Crie sua conta em poucos passos.
-                    </a>
-
-                </form>
+                        <span
+                            className="create-account"
+                            onClick={() => navigate("/criar-conta")}
+                        >
+                            Novo por aqui? Crie sua conta.
+                        </span>
+                    </form>
+                </div>
             </div>
         </div>
     );

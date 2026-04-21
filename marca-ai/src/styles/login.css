@@ -1,99 +1,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
+/* 🔥 animação da tela */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+
+    animation: fadeBlurIn 0.8s ease forwards;
+}
+
+@keyframes fadeBlurIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.logo-container {
+    animation: fadeBlurIn 0.8s ease forwards;
+}
+
+.login-card {
+    animation: fadeBlurIn 1s ease forwards;
+}
+
+/* 🔥 RESET + FONTE GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* 🔥 CONTAINER */
 .login-container {
     height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+/* 🔥 OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* 🔥 CONTEÚDO */
+.content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to bottom, #ffffff, #9e9e9e);
 }
 
-.login-card {
-    width: 380px;
-    background: #e5e5e5;
-    padding: 20px 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.08);
-}
-
-.login-card-white {
-    width: 380px;
-    background: white;
-    padding: 20px 30px;
-    border-radius: 12px;
-    text-align: center;
-}
-
+/* 🔥 LOGO */
 .logo-container {
-    position: relative;
-    width: 450px;
-    margin: 0 auto 1px;
+    width: 480px;
     margin-bottom: 30px;
 }
 
 .login-logo {
     width: 100%;
-    max-width: 450px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    filter: drop-shadow(0 0 8px #ffffff)
-            drop-shadow(0 0 16px #ffffff);
-    transform: translate(-50%, -50%);
+
+    filter:
+        drop-shadow(0 0 40px rgba(0, 0, 0, 0.5))
+        drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
+        drop-shadow(0 0 10px rgba(0, 0, 0, 0.4))
+        drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.427));
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* 🔥 CARD */
+.login-card {
+    width: 380px;
+    padding: 30px;
+
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(16px);
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    text-align: center;
 }
 
-.login-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #029427;
-    font-weight: bold;
-}
-
+/* 🔥 INPUTS */
 .input-group {
     text-align: left;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
     position: relative;
-}
-
-.input-group a {
-    cursor: pointer;
 }
 
 .input-group label {
-    font-size: 14px;
-    font-family: 'Inter', Arial, sans-serif;
+    font-size: 13px;
+    color: #ccc;
     margin-bottom: 6px;
     display: block;
 }
 
-.input-group {
-    position: relative;
-    margin-bottom: 8px;
-}
-
 .input-group input {
-    width: 85%;
-    padding: 12px 40px 12px 12px;
-    font-size: 14px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #fff;
     outline: none;
-    line-height: 1.5;
-    box-shadow: inset 0 4px 0 rgba(0,0,0,0.08);
+
+    transition: 0.25s;
 }
 
+.input-group input:focus {
+    border: 1px solid rgba(212,175,55,0.6);
+    box-shadow: 0 0 10px rgba(212,175,55,0.2);
+}
+
+/* 🔥 OLHO */
 .eye {
     position: absolute;
     right: 15px;
@@ -101,113 +141,105 @@
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 18px;
-    color: #555;
+    color: #aaa;
 }
 
-.forgot-pass {
-    font-size: 12px;
-    margin-top: 1px;
-    color: #004b9b;
-    font-family: 'Inter', Arial, sans-serif;
-    text-decoration: underline;
-    display: inline-block;
-}
-
+/* 🔥 LINKS */
+.forgot-pass,
 .create-account {
     font-size: 12px;
+    color: rgba(255,255,255,0.6);
     cursor: pointer;
-    margin-top: 20px;
-    font-family: 'Inter', Arial, sans-serif;
-    color: #004b9b;
-    text-decoration: underline;
-    display: inline-block;
-}
-
-.btn {
-    width: 40%;
-    padding: 10px 18px;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-    font-weight: bold;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.20);
-}
-
-.btn-mini {
-    width: 45%;
-    padding: 10px 18px;
-    border: none;
-    color: #fff;
-    font-size: 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 10px 5px;
-    transition: background 0.3s ease;
-    font-weight: bold;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.20);
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-mini-center {
-    width: 45%;
-    padding: 10px 18px;
-    border: none;
-    color: #fff;
-    font-size: 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 10px 150px;
-    transition: background 0.3s ease;
-    font-weight: bold;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.20);
-    display: inline-block;
-    text-align: center;
-}
-
-.form-select {
-    padding: 10px 14px;
-    border: 1px solid #cfcfcf;
-    border-radius: 30px;
-    font-size: 16px;
-    background: white;
-    outline: none;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.20);
+    display: block;
+    margin-top: 6px;
+    text-decoration: none;
     transition: 0.2s;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: white url('data:image/svg+xml;utf8,<svg fill="%23198d32" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 14px center;
-    background-size: 16px;
-    padding-right: 40px;
 }
 
-.form-select:focus {
-    outline: none;
-    box-shadow: none;
+.forgot-pass:hover,
+.create-account:hover {
+    color: #d4af37;
 }
 
-/* Botão verde */
-.btn-green {
-    background: #00940f;
-}
-.btn-green:hover {
-    background: #005f0a;
+/* 🔥 BOTÃO BASE */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-/* Botão azul */
+/* 🟡 BOTÃO DOURADO PREMIUM */
 .btn-gray {
-    background: #747878;
-}
-.btn-gray:hover {
-    background: #5c5757;
+    color: #3a2b00;
+
+    background: linear-gradient(
+        145deg,
+        #f5d08a 0%,
+        #e6b96b 25%,
+        #c9973e 50%,
+        #e6b96b 75%,
+        #f5d08a 100%
+    );
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px rgba(201,151,62,0.25),
+        inset 0 2px 4px rgba(255,255,255,0.6),
+        inset 0 -3px 6px rgba(0,0,0,0.25);
+
+    transition: all 0.2s ease;
 }
 
-/* Botão vermelho */
+/* ✨ REFLEXO */
+.btn-gray::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+}
+
+/* 🖱️ HOVER */
+.btn-gray:hover {
+    transform: translateY(-2px);
+}
+
+.btn-gray:hover::before {
+    animation: shine 0.8s ease;
+}
+
+/* 👆 CLICK */
+.btn-gray:active {
+    transform: scale(0.97);
+
+    box-shadow:
+        inset 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* ✨ ANIMAÇÃO */
+@keyframes shine {
+    100% {
+        left: 140%;
+    }
+}
+
+/* 🔴 BOTÃO VERMELHO (mantido) */
 .btn-red {
     background: #c91414;
 }
@@ -215,8 +247,21 @@
     background: #4e0404;
 }
 
+/* 🔽 SELECT */
+.form-select {
+    padding: 10px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    background: #2a2a2a;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+/* 🔹 DIVISOR */
 .ou {
     margin: 10px 0;
-    color: #555;
-    font-weight: bold;
+    color: #aaa;
+    font-weight: 500;
 }
