@@ -1,4 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+.form-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: 'Playfair Display', Arial, sans-serif;
+    margin-bottom: 20px;
+    color: #f5d08a;
+    position: relative;
+}
+
+.form-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #f5d08a, transparent);
+    margin: 8px auto 0;
+}
+
+.form-subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Playfair Display', Arial, sans-serif;
+    color: #f5d08a;
+}
+
+.subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 10px;
+}
+
+.info-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #f5d08a;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 140%; /* fica acima do ícone */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    width: 240px;
+    padding: 10px 12px;
+
+    background: rgba(20, 20, 20, 0.95);
+    color: #fff;
+    font-size: 12px;
+
+    border-radius: 8px;
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.25s ease;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+
+    top: 100%; /* fica embaixo do tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-width: 6px;
+    border-style: solid;
+
+    border-color: rgba(20,20,20,0.95) transparent transparent transparent;
+}
+
+.info-icon:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip {
+    border: 1px solid rgba(212,175,55,0.2);
+}
 
 /* animação da tela */
 .fade-in {
@@ -162,11 +254,27 @@
     color: rgba(248, 224, 147, 0.5);
 }
 
+.btn-group {
+    display: flex;
+    gap: 12px; /* 🔥 espaçamento entre eles */
+    margin-top: 15px;
+}
+
 /* BOTÃO BASE */
 .btn {
     width: 100%;
     padding: 14px;
     /*border-radius: 30px;*/
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* BOTÃO MINI */
+.btn-mini {
+    flex: 1; /* 🔥 divide igualmente */
+    padding: 14px;
     border: none;
     font-size: 16px;
     font-weight: 500;
