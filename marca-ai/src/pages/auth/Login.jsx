@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import bg from "../../assets/background.jpg";
 import InputPassword from "../../components/common/InputPassword";
-import logo from "../../assets/colab.png";
+import logo from "../../assets/logo.png";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -63,7 +63,6 @@ export default function Login() {
                 <div className="login-card">
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
-                            <label>E-mail ou Telefone</label>
                             <input
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -72,8 +71,6 @@ export default function Login() {
                         </div>
 
                         <div className="input-group">
-                            <label>Senha</label>
-
                             <InputPassword
                                 value={senha}
                                 onChange={setSenha}
@@ -89,7 +86,7 @@ export default function Login() {
 
                         <button
                             type="submit"
-                            className="btn btn-gray"
+                            className="btn btn-golden"
                             disabled={loading}
                         >
                             {loading ? "Entrando..." : "Entrar"}
