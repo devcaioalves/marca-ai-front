@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* REMOVE A ROLAGEM HORIZONTAL */
+}
+
 :root {
     /*Cores principais*/
     --preto-principal: #0B0B0B;
@@ -16,14 +23,41 @@
     --cinza-claro: #CFCFCF;
     --cinza-texto: #A8A8A8;
 
-    /*Fontes*/
-    --font-titulo: 'Playfair Display', serif;
-    --font-subtitulos: 'Poppins', sans-serif;
 }
 
-html, body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    overflow-x: hidden; /* REMOVE A ROLAGEM HORIZONTAL */
+.Toastify__toast {
+    background: rgba(15,15,15,0.95);
+    color: #fff;
+
+    border: 1px solid rgba(212,175,55,0.3);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+
+    border-radius: 12px;
+}
+
+/* sucesso */
+.Toastify__toast--success {
+    border-left: 4px solid #d4af37;
+}
+
+/* erro */
+.Toastify__toast--error {
+    border-left: 4px solid #ff4d4f;
+}
+
+/* texto */
+.Toastify__toast-body {
+    font-size: 14px;
+}
+
+/* barra de progresso */
+.Toastify__progress-bar {
+    background: linear-gradient(
+        90deg,
+        #f5d08a,
+        #e6b96b,
+        #c9973e
+    );
 }

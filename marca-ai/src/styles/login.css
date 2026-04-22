@@ -1,79 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
 
-/* animação da tela */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(10px);
-
-    animation: fadeBlurIn 0.8s ease forwards;
-}
-
-@keyframes fadeBlurIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-.logo-container {
-    animation: fadeBlurIn 0.8s ease forwards;
-}
-
-.login-card {
-    animation: fadeBlurIn 1s ease forwards;
-}
-
-/* RESET + FONTE GLOBAL */
-* {
+/* ============================================================
+   RESET + FONTE GLOBAL
+   ============================================================ */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', Arial, sans-serif;
 }
 
-/* CONTAINER */
+/* Elimina a listra branca lateral:
+   overflow-x hidden no html+body bloqueia qualquer
+   elemento que vaze para fora da viewport em mobile. */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* ============================================================
+   CONTAINER PRINCIPAL
+   ============================================================ */
 .login-container {
-    height: 100vh;
+    /* dvh respeita a barra de endereço do browser mobile;
+       fallback para vh em browsers mais antigos. */
+    min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;          /* sempre centralizado — mobile incluso */
 
+    background-attachment: fixed;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
 
     position: relative;
+
+    /* Padding simétrico: respiro nas bordas sem descentrar o card */
+    padding: clamp(24px, 6vh, 60px) clamp(16px, 5vw, 32px);
+
+    /* Garante que nada vaze para a direita */
+    overflow-x: hidden;
 }
 
-/* OVERLAY */
+/* ============================================================
+   OVERLAY  (position fixed = cobre sempre 100 % da tela)
+   ============================================================ */
 .overlay {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
 
-/* CONTEÚDO */
+/* ============================================================
+   CONTEÚDO
+   ============================================================ */
 .content {
     position: relative;
     z-index: 2;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 420px;           /* centraliza em telas grandes */
 }
 
-/* LOGO */
+/* ============================================================
+   LOGO
+   ============================================================ */
 .logo-container {
-    width: 240px;
-    margin-bottom: 30px;
+    width: clamp(160px, 40vw, 240px);  /* escala suave entre breakpoints */
+    margin-bottom: clamp(18px, 4vw, 30px);
+    animation: fadeBlurIn 0.8s ease forwards;
 }
 
 .login-logo {
     width: 100%;
-
     filter:
         drop-shadow(0 0 40px rgba(0, 0, 0, 0.5))
         drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
@@ -81,27 +86,121 @@
         drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.427));
 }
 
-/* CARD */
+/* ============================================================
+   CARD
+   ============================================================ */
 .login-card {
-    width: 380px;
-    padding: 30px;
+    width: 100%;                /* ocupa o max-width do .content */
+    padding: clamp(20px, 5vw, 30px);
 
     background: rgba(15, 15, 15, 0.75);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     border-radius: 16px;
-
     border: 1px solid rgba(248, 224, 147, 0.5);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.7),
+        0 20px 50px rgba(0, 0, 0, 0.7),
         0 0 15px rgba(240, 211, 115, 0.2),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
     text-align: center;
+    animation: fadeBlurIn 1s ease forwards;
 }
 
-/* INPUTS */
+/* ============================================================
+   TÍTULOS
+   ============================================================ */
+.form-title {
+    text-align: center;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 600;
+    font-family: 'Playfair Display', Arial, sans-serif;
+    margin-bottom: 20px;
+    color: #f5d08a;
+    position: relative;
+}
+
+.form-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #f5d08a, transparent);
+    margin: 8px auto 0;
+}
+
+.form-subtitle {
+    margin: 0;
+    font-size: clamp(12px, 3vw, 14px);
+    font-family: 'Playfair Display', Arial, sans-serif;
+    color: #f5d08a;
+}
+
+.subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 10px;
+}
+
+/* ============================================================
+   TOOLTIP / ÍCONE DE INFO
+   ============================================================ */
+.info-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5d08a;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    width: clamp(180px, 60vw, 240px);
+    padding: 10px 12px;
+
+    background: rgba(20, 20, 20, 0.95);
+    color: #fff;
+    font-size: 12px;
+
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(20, 20, 20, 0.95) transparent transparent transparent;
+}
+
+.info-icon:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
 .input-group {
     text-align: left;
     margin-bottom: 14px;
@@ -118,20 +217,21 @@
 .input-group input {
     width: 100%;
     padding: 14px;
-    /*border-radius: 30px;*/
 
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     color: #fff;
     outline: none;
-
     transition: 0.25s;
+
+    /* Evita zoom automático no iOS (fonte mín. 16px) */
+    font-size: max(16px, 1rem);
 }
 
 .input-group input:focus {
     border: 1px solid rgba(248, 224, 147, 0.5);
-    box-shadow: 0 0 10px rgba(212,175,55,0.2);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
 /* OLHO */
@@ -145,11 +245,13 @@
     color: #aaa;
 }
 
-/* LINKS */
+/* ============================================================
+   LINKS
+   ============================================================ */
 .forgot-pass,
 .create-account {
     font-size: 12px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     display: block;
     margin-top: 6px;
@@ -162,21 +264,36 @@
     color: rgba(248, 224, 147, 0.5);
 }
 
-/* BOTÃO BASE */
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
 .btn {
     width: 100%;
     padding: 14px;
-    /*border-radius: 30px;*/
     border: none;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     font-weight: 500;
     cursor: pointer;
 }
 
-/* BOTÃO DOURADO PREMIUM */
+.btn-mini {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    font-size: clamp(14px, 4vw, 16px);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* BOTÃO DOURADO */
 .btn-golden {
     color: #3a2b00;
-
     background: linear-gradient(
         145deg,
         #f5d08a 0%,
@@ -185,19 +302,15 @@
         #e6b96b 75%,
         #f5d08a 100%
     );
-
     position: relative;
     overflow: hidden;
-
     box-shadow:
-        0 8px 20px rgba(201,151,62,0.25),
-        inset 0 2px 4px rgba(255,255,255,0.6),
-        inset 0 -3px 6px rgba(0,0,0,0.25);
-
+        0 8px 20px rgba(201, 151, 62, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.25);
     transition: all 0.2s ease;
 }
 
-/* REFLEXO */
 .btn-golden::before {
     content: "";
     position: absolute;
@@ -205,18 +318,10 @@
     left: -60%;
     width: 40%;
     height: 100%;
-
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.6),
-        transparent
-    );
-
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     transform: skewX(-20deg);
 }
 
-/* HOVER */
 .btn-golden:hover {
     transform: translateY(-2px);
 }
@@ -225,30 +330,27 @@
     animation: shine 0.8s ease;
 }
 
-/* CLICK */
 .btn-golden:active {
     transform: scale(0.97);
-
-    box-shadow:
-        inset 0 3px 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* ANIMAÇÃO */
 @keyframes shine {
-    100% {
-        left: 140%;
-    }
+    100% { left: 140%; }
 }
 
 /* BOTÃO VERMELHO */
 .btn-red {
     background: #c91414;
 }
+
 .btn-red:hover {
     background: #4e0404;
 }
 
-/* SELECT */
+/* ============================================================
+   SELECT
+   ============================================================ */
 .form-select {
     padding: 10px 14px;
     border-radius: 30px;
@@ -260,9 +362,120 @@
     width: 100%;
 }
 
-/* DIVISOR */
+/* ============================================================
+   DIVISOR
+   ============================================================ */
 .ou {
     margin: 10px 0;
     color: #aaa;
     font-weight: 500;
+}
+
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA
+   ============================================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+    animation: fadeBlurIn 0.8s ease forwards;
+}
+
+@keyframes fadeBlurIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVO — TABLETS  (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px 16px;
+        align-items: center;        /* mantém centralizado */
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .login-card {
+        border-radius: 12px;
+    }
+
+    /* Tooltip: abre para baixo em telas estreitas para não sair da tela */
+    .tooltip {
+        bottom: auto;
+        top: 140%;
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    .tooltip::after {
+        top: auto;
+        bottom: 100%;
+        border-color: transparent transparent rgba(20, 20, 20, 0.95) transparent;
+    }
+
+    .info-icon:hover .tooltip {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVO — MOBILE  (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    .login-container {
+        /* Mantém centralizado. Caso o conteúdo seja maior que a
+           viewport, o padding garante respiro e o scroll aparece
+           sem descentrar visualmente o card. */
+        align-items: center;
+        padding: max(20px, env(safe-area-inset-top)) 16px
+                 max(20px, env(safe-area-inset-bottom));
+    }
+
+    .content {
+        padding-top: 0;           /* remove deslocamento para cima */
+    }
+
+    .login-card {
+        padding: 22px 18px;
+        border-radius: 10px;
+    }
+
+    /* Botões empilham em telas muito pequenas */
+    .btn-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-mini {
+        flex: none;
+        width: 100%;
+    }
+
+    .input-group input {
+        padding: 12px;
+    }
+
+    .btn,
+    .btn-mini {
+        padding: 13px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVO — LARGE / 4K  (≥ 1600px)
+   ============================================================ */
+@media (min-width: 1600px) {
+    .content {
+        max-width: 460px;
+    }
+
+    .logo-container {
+        width: 280px;
+    }
 }
