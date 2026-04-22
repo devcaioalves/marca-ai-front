@@ -1,8 +1,5 @@
-html, body {
+@charset "UTF-8";
 
-<<<<<<< Updated upstream
-    padding: 0;
-=======
 html, body {
 
     padding: 0;
@@ -16,9 +13,16 @@ html, body {
     --preto-principal: #0B0B0B;
     --marrom-escuro: #1A1412;
     --marrom-gradiente: #2A1E1B;
->>>>>>> Stashed changes
 
-    margin: 0;
+    /*Dourado*/
+    --dourado: #D4AF37;
+    --dourado-claro: #F1D27A;
+    --dourado-principal: #C9A227;
+
+    /*Neutro*/
+    --branco: #FFFFFF;
+    --cinza-claro: #CFCFCF;
+    --cinza-texto: #A8A8A8;
 
 }
 
