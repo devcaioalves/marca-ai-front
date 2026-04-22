@@ -15,20 +15,22 @@
 }
 
 .link{
-    width: 150px;
-    height: 40px;
+    width: 190px;
+    height: 45px;
     margin-right: 35px;
     border: 1px solid var(--dourado-principal);
     border-radius: 5px;
     
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .link .link-login{
     color: var(--dourado-principal);
     font-family: var(--font-subtitulos);
-    font-size: 0.7em;
-    font-weight: 300;
+    font-size: 0.85em;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     text-decoration: none;
 
     width: 100%;
@@ -36,10 +38,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 0.3s ease;
 }
 
 .link:hover{
     border-color: var(--cinza-claro);
+
+    box-shadow: 
+        0 0 8px rgba(245,208,138,0.4),
+        0 0 16px rgba(245,208,138,0.2);
+    transform: translateY(-2px);
 }
 
 .link .link-login:hover{

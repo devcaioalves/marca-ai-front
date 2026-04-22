@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.btn-golden-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    color: #3a2b00;
+
+    background: linear-gradient(
+        145deg,
+        #f5d08a 0%,
+        #e6b96b 25%,
+        #c9973e 50%,
+        #e6b96b 75%,
+        #f5d08a 100%
+    );
+
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+
+    box-shadow:
+        0 8px 20px rgba(201,151,62,0.25),
+        inset 0 2px 4px rgba(255,255,255,0.6),
+        inset 0 -3px 6px rgba(0,0,0,0.25);
+
+    transition: all 0.2s ease;
+}
+
+/* REFLEXO */
+.btn-golden-base::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+}
+
+/* HOVER */
+.btn-golden-base:hover {
+    transform: translateY(-2px);
+}
+
+.btn-golden-base:hover::before {
+    animation: shine 0.8s ease;
+}
+
+/* CLICK */
+.btn-golden-base:active {
+    transform: scale(0.97);
+
+    box-shadow:
+        inset 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* ANIMAÇÃO */
+@keyframes shine {
+    100% {
+        left: 140%;
+    }
+}
