@@ -80,7 +80,7 @@ export default function AlterarSenha() {
                             <button
                                 type="button"
                                 className="btn-mini btn-golden"
-                                onClick={() => navigate("/")}
+                                onClick={() => navigate("/login")}
                             >
                                 Voltar
                             </button>

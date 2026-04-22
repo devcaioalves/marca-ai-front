@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
+import Home  from "../pages/Home.jsx";
 import Login from "../pages/auth/Login.jsx";
 import CriarConta from "../pages/auth/CriarConta.jsx";
 import PrivateRoute from "../components/common/PrivateRoute.jsx";
@@ -18,7 +19,8 @@ export default function AppRoutes() {
     return (
         <Routes>
             {/* Rotas públicas */}
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/criar-conta" element={<CriarConta />} />
             <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
