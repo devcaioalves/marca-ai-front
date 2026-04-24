@@ -7,9 +7,9 @@ import PrivateRoute from "../components/common/PrivateRoute.jsx";
 import EsqueceuSenha from "../pages/auth/EsqueceuSenha.jsx";
 import RecebeCodigo from "../pages/auth/RecebeCodigo.jsx";
 import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
-
+import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 // Descomente as páginas conforme for criando:
-// import Home from "../pages/Home.jsx";
+//import Home from "../pages/Home.jsx";
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
 // import UserSettings from "../pages/UserSettings.jsx";
 // import ProposalsPage from "../pages/ProposalsPage.jsx";
@@ -25,6 +25,7 @@ export default function AppRoutes() {
             <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
             <Route path="/alterar-senha" element={<AlterarSenha />} />
+            <Route path="/criar-servico" element={<ServiceForm />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>

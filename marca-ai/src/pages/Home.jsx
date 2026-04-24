@@ -66,7 +66,7 @@ export default function Home() {
                 </div>
 
                 <div className="info">
-                    <p>Para conhecer mais dos meus serviços, siga-me nas redes sociais e entre em contanto comido diretamente pelo WhatsApp e agende seu horário.</p>
+                    <p>Para conhecer mais dos meus serviços, siga-me nas redes sociais e entre em contato comigo diretamente pelo WhatsApp e agende seu horário.</p>
                 </div>
 
                 <div className="redes-sociais">
