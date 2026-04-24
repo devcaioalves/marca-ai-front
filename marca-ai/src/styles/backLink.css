@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.back-link {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  left: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  color: var(--dourado-principal);
+  width: 100px;
+  height: 40px;
+  border: 1px solid var(--dourado-principal);
+  border-radius: 5px;
+  font-family: var(--font-subtitulos);
+  font-weight: bold;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.back-link:hover{
+    border-color: var(--cinza-claro);
+    color: var(--cinza-claro);
+    box-shadow: 
+        0 0 8px rgba(245,208,138,0.4),
+        0 0 16px rgba(245,208,138,0.2);
+    transform: translateY(-2px);
+}
+
+/* ícone */
+.back-link svg {
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+/* animação da seta */
+.back-link:hover svg {
+  transform: translateX(-4px);
+}

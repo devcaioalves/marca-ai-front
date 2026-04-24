@@ -23,6 +23,9 @@ html, body {
     --cinza-claro: #CFCFCF;
     --cinza-texto: #A8A8A8;
 
+    --font-titulo: 'Playfair Display', serif;
+    --font-subtitulos: 'Poppins', sans-serif;
+
 }
 
 .Toastify__toast {
