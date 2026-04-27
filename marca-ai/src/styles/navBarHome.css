@@ -60,3 +60,52 @@
     height: 1px;
     background-color: var(--dourado-principal);
 }
+
+/*Media queries*/
+@media (max-width: 1024px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .img-logo-navbar {
+    width: 70px;
+    margin-left: 0;
+  }
+
+  .link {
+    width: 160px; 
+    height: 38px;
+    margin-right: 0;
+  }
+
+  .link .link-login {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 55px;
+    padding: 0 12px; 
+  }
+
+  .img-logo-navbar {
+    width: 70px; 
+    margin-left: 0;
+  }
+
+  .link {
+    width: 120px; 
+    height: 34px;
+    padding: 0 10px; 
+    margin-right: 0;
+  }
+
+  .link .link-login {
+    font-size: 0.6em;
+    padding: 0 8px;
+    text-align: center;
+  }
+}

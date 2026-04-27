@@ -3,7 +3,7 @@
 .hero {
   min-height: 100vh;
   position: relative;
-  background-image: url("../assets/background.jpg");
+  background-image: url("../assets/fundo-home2.webp");
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,20 +12,22 @@
 .hero::after {
   content: "";
   position: absolute;
-  top: 0px;
-  right: 150px;
+  top: 40px;
+  right: 200px;
 
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   height: 900px;
 
   background-image: url("../assets/logo-salão-trasparente.png");
   background-repeat: no-repeat;
   background-size: contain;
 
-  opacity: 0.06;
+  opacity: 0.08;
   pointer-events: none;
 
   transform: translate(20%, -20%);
+  z-index: 1;
 }
 
 .hero::before {
@@ -34,44 +36,48 @@
   inset: 0;
   pointer-events: none;
 
-  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 5px;
 
   width: 100%;
-  padding: 0px 80px 0 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  padding: 40px 80px 0 80px;
+  z-index: 2;
 }
 
 .left img {
-  width: 500px;
-  margin-left: 20px;
-  transform: translate(-70px, -30px);
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  
+  
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
 
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 20%,
-    black 80%,
-    transparent 100%
-  );
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 25%, black 100%);
 
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 20%,
-    black 80%,
-    transparent 100%
-  );
+  -webkit-mask-composite: destination-in;
+
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 25%, black 100%);
+
+  mask-composite: intersect;
 }
 
 .right {
-  width: 700px;
-  margin-left: -60px;
+  width: 100%;
+  max-width: 700px;
   position: relative;
 }
 
@@ -209,26 +215,36 @@
 
 .imagens {
   display: grid;
-  grid-template-columns: repeat(2, 320px);
-  justify-content: space-evenly;
-  margin-top: 30px;
-  row-gap: 50px;
+  grid-template-columns: repeat(2, 340px);
+  gap: 55px 60px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .card-img {
   position: relative;
-  padding: 15px;
-  width: 320px;
+  padding: 18px;
+  width: 100%;
+  max-width: 340px;
 
-  background-color: #2a1e1bac;
-  backdrop-filter: blur(4px);
+  background: rgba(42, 30, 27, 0.78);
+  backdrop-filter: blur(8px);
 
+  border-radius: 10px;
   text-align: center;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    0 0 10px rgba(201, 151, 62, 0.08);
+
+  transition: all 0.3s ease;
 }
 
 .card-img:hover {
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(201, 151, 62, 0.12);
 }
 
 .card-img::before {
@@ -246,7 +262,8 @@
 .henna,
 .micro,
 .brow {
-  width: 290px;
+  width: 100%;
+  max-width: 290px;
   height: 150px;
   border-radius: 10px;
   object-fit: cover;
@@ -258,9 +275,10 @@
 .card-img p {
   color: var(--cinza-texto);
   font-family: var(--font-subtitulos);
-  padding-top: 10px;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  padding-top: 14px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .info {
@@ -335,4 +353,133 @@
   color: var(--dourado-principal);
   transition: color 0.3s ease;
   margin-bottom: 25px;
+}
+
+
+/*Media queries*/
+
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 25px;
+  }
+
+  .left img {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .right h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .right h3 {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .btn-agendar {
+    margin-top: 10px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+
+  .about-studio h2,
+  .services h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-studio p,
+  .info p {
+    font-size: 1rem;
+  }
+
+  .imagens {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+    margin-top: 40px;
+    justify-items: center;
+  }
+
+  .card-img {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .services,
+  .about-studio {
+    padding: 0 20px;
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  @media (max-width: 1024px) {
+
+  .container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 30px;
+    gap: 30px;
+  }
+
+  .left img {
+    max-width: 260px;
+    margin-bottom: 20px;
+  }
+
+  .right h1 {
+    font-size: 2.1rem;
+    margin-bottom: 20px;
+  }
+
+  .right h3 {
+    font-size: 1.1rem;
+  }
+
+  .btn-agendar {
+    margin-top: 30px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+
+  .imagens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+    column-gap: 40px;
+    margin-top: 40px;
+    justify-items: center;
+  }
+
+  .card-img {
+    max-width: 300px;
+  }
+}
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px;
+  }
+
+  .left img {
+    width: 550px;
+  }
+
+  .right h1 {
+    font-size: 3.5rem;
+  }
 }
