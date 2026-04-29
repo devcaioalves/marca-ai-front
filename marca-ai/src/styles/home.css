@@ -9,7 +9,7 @@
   background-position: center;
 }
 
-.hero::after {
+/* .hero::after {
   content: "";
   position: absolute;
   top: 40px;
@@ -28,7 +28,7 @@
 
   transform: translate(20%, -20%);
   z-index: 1;
-}
+} */
 
 .hero::before {
   content: "";
@@ -79,28 +79,30 @@
   width: 100%;
   max-width: 700px;
   position: relative;
+  z-index: 2;
 }
 
 .right::before {
   content: "";
   position: absolute;
 
-  width: 500px;
-  height: 500px;
-
   top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
 
-  background: radial-gradient(
-    circle,
-    rgba(201, 151, 62, 0.25) 0%,
-    rgba(201, 151, 62, 0.1) 40%,
-    transparent 70%
-  );
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
 
-  filter: blur(60px);
+  background-image: url("../assets/logo-salão-trasparente.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  opacity: 0.08;
+
+  pointer-events: none;
   z-index: 0;
 }
 
