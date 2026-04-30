@@ -22,7 +22,7 @@ export default function ServiceForm() {
 
       if(nome.trim() === "" || descricao.trim() === "" ||
          valor.trim() === "" || duracao.trim() === ""){
-          toast.error("Campo obrigatório!");
+          toast.error("Todos os campos são obrigatórios!");
           return;
       }
 

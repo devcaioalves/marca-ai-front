@@ -26,7 +26,7 @@ export default function Home() {
                         <h1>O OLHAR <strong>PERFEITO</strong> PARA VOCÊ</h1>
                         <h3>Realce sua beleza com sobrancelhas impecáveis</h3>
 
-                        <GoldenButton           className="btn-agendar">Agendar Agora
+                        <GoldenButton  className="btn-agendar">Agendar Agora
                         </GoldenButton>
                     </div>
                 </div>
