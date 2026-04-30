@@ -8,6 +8,7 @@ import EsqueceuSenha from "../pages/auth/EsqueceuSenha.jsx";
 import RecebeCodigo from "../pages/auth/RecebeCodigo.jsx";
 import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
 import ServiceForm from "../pages/servicos/ServiceForm.jsx";
+import HorarioForm from "../pages/horarios/HorarioForm.jsx"
 // Descomente as páginas conforme for criando:
 //import Home from "../pages/Home.jsx";
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
@@ -26,6 +27,7 @@ export default function AppRoutes() {
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
             <Route path="/alterar-senha" element={<AlterarSenha />} />
             <Route path="/criar-servico" element={<ServiceForm />} />
+            <Route path="/criar-horario" element={<HorarioForm />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
