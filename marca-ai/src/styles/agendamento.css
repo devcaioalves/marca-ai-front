@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 20px;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.lista-agendamentos{
+    margin-top: 35px;
+    background-color: #1A1A1A;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+
+    max-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-scroll{
+    overflow-y: auto;
+}
+
+/* ESTILO DO SCROLL DE AGENDAMENTOS*/
+.lista-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.lista-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lista-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.5); 
+    border-radius: 10px;
+}
+
+.lista-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--dourado-principal);
+}
+
+.header-agendamento{
+    flex-shrink: 0;
+}
+
+.header-agendamento h3{
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
+    padding: 0 8px 10px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05)
+}
+
+.agendamento-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.agendamento-left{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hora{
+    color: var(--dourado-principal);
+    font-family: var(--font-subtitulos);
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.informacoes{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.informacoes strong{
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-size: 0.9em;
+    font-weight: inherit;
+}
+
+.informacoes span{
+    color: var(--cinza-claro);
+    font-family: var(--font-subtitulos);
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.agendamento-right{
+    display: flex;
+}
+
+.status{
+    min-width: 100px;
+    text-align: center;
+    height: 28px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-family: var(--font-subtitulos);
+    font-size: 0.8em;
+    font-weight: inherit;
+}
+
+.status.confirmado{
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--dourado);
+}
+
+.status.realizado{
+    background: rgba(0, 255, 0, 0.15);
+    color: limegreen;
+}
+
+.status.cancelado{
+    background: rgba(255, 0, 0, 0.15);
+    color: red;
+}
+
+.status.remarcado{
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.sem-agendamento p{
+    color: var(--cinza-texto);
+    font-family: var(--font-subtitulos);
+    font-size: 0.9em;
+    padding: 0 8px;
+    margin-top: 10px;
+}
+
+.calendario{
+    margin-top: 35px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.react-calendar {
+    background: #1A1A1A;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+
+    width: 100%;
+}
+
+/* HEADER (mês e navegação) */
+.react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.react-calendar__navigation button {
+    background: none;
+    border: none;
+    color: var(--dourado-principal);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* DIAS DA SEMANA */
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 0.7em;
+    color: var(--cinza-claro);
+}
+
+.react-calendar__tile {
+    background: transparent;
+    border: none;
+    color: var(--branco);
+    padding: 10px 0;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+/* HOVER */
+.react-calendar__tile:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* DIA ATUAL */
+.react-calendar__tile--now {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--dourado-principal);
+}
+
+/* DIA SELECIONADO */
+.react-calendar__tile--active {
+    background: var(--dourado-principal);
+    color: #000;
+}
+
+/* DIAS FORA DO MÊS */
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #555;
+}
