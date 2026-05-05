@@ -8,7 +8,8 @@ import EsqueceuSenha from "../pages/auth/EsqueceuSenha.jsx";
 import RecebeCodigo from "../pages/auth/RecebeCodigo.jsx";
 import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
 import ServiceForm from "../pages/servicos/ServiceForm.jsx";
-import HorarioForm from "../pages/horarios/HorarioForm.jsx"
+import HorarioForm from "../pages/horarios/HorarioForm.jsx";
+import Dashboard from "../pages/Dashboard.jsx";
 // Descomente as páginas conforme for criando:
 //import Home from "../pages/Home.jsx";
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
@@ -28,6 +29,7 @@ export default function AppRoutes() {
             <Route path="/alterar-senha" element={<AlterarSenha />} />
             <Route path="/criar-servico" element={<ServiceForm />} />
             <Route path="/criar-horario" element={<HorarioForm />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>

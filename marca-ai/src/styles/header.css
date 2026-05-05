@@ -1,0 +1,80 @@
+@charset "UTF-08";
+
+.header-left{
+    margin-top: 18px;
+    margin-left: 20px;
+}
+
+.header-left h1{
+    color: var(--branco);
+    font-size: 1.5em;
+    font-family: var(--font-titulo);
+}
+
+.header-left p{
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+.icone-brilho{
+    color: var(--dourado-principal);
+}
+
+.header-right{
+    margin-top: 18px;
+    margin-right: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    color: var(--branco);
+}
+
+.icone-sino{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.icone-sino:hover{
+    color: var(--dourado-principal);
+}
+
+.notificacao-link{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ESTILIZAÇÃO DO PONTINHO DA NOTIFICAÇÃO*/
+.badge{
+    position: absolute;
+    top: -1px;
+    right: -1px;
+
+    width: 10px;
+    height: 9px;
+
+    background-color: var(--dourado-claro);
+    border-radius: 50%;
+
+    border: 2px solid #0D0D0D;
+}
+
+.data-container{
+    width: 155px;
+    padding: 10px;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+}
+
+.data-container span{
+    opacity: 0.7;
+}
+
+.data-container p, .data-container span{
+    font-family: var(--font-subtitulos);
+    font-weight: bolder;
+    font-size: 0.8em;
+}

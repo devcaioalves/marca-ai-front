@@ -1,0 +1,82 @@
+@charset "UTF-08";
+
+.sidebar-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-img{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.logo-sidebar{
+    width: 120px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+}
+
+.menu a {
+    padding: 12px 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    transition: all 0.20s ease;
+}
+
+.menu a:hover, .perfil:hover {
+    background: linear-gradient(
+        145deg,
+        #f5d08a 0%,
+        #e6b96b 25%,
+        #c9973e 50%,
+        #e6b96b 75%,
+        #f5d08a 100%
+    );
+
+    color: black;
+}
+
+.icon-sidebar{
+    margin-right: 8px;
+}
+
+footer{
+    margin-top: auto;
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+    width: 220px;
+    height: 50px;
+    margin-bottom: 5px;
+    gap: 12px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--branco);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.perfil-texto p{
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+.icone-perfil{
+    font-size: 1em;
+}
