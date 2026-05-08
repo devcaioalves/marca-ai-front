@@ -77,3 +77,15 @@
         left: 140%;
     }
 }
+
+@media (max-width: 768px){
+    .btn-golden-base{
+        min-height: 35px;
+        padding: 10px 15px;
+        font-size: 0.8em;
+        box-shadow:
+            0 6px 16px rgba(201,151,62,0.14),
+            inset 0 2px 4px rgba(255,255,255,0.35),
+            inset 0 -2px 4px rgba(0,0,0,0.15);
+    }
+}

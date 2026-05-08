@@ -32,7 +32,7 @@ export default function Login() {
             await login(identificador, senha);
 
             toast.success("Login realizado com sucesso!");
-            navigate("/home");
+            navigate("/dashboard");
 
         } catch (error) {
             const data = error.response?.data;
