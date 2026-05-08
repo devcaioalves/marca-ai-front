@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.header-common{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-top: 18px;
+    padding: 0 20px;
+}
+
+.header-text h1{
+    color: var(--branco);
+    font-size: 1.5em;
+    font-family: var(--font-titulo);
+}
+
+.header-text p{
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+.btn-primary{
+    font-family: var(--font-subtitulos);
+    font-weight: bold;
+    font-size: 0.8em;
+    width: 130px;
+    height: 50px;
+    border-radius: 8px;
+}
