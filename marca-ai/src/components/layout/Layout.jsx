@@ -2,7 +2,7 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import "../../styles/layout.css";
 
-export default function Layout({ children }) {
+export default function Layout({ children, header }) {
     return (
         <div className="layout">
 
@@ -11,7 +11,7 @@ export default function Layout({ children }) {
             </div>
 
             <div className="header-area">
-                <Header />
+                {header}
             </div>
 
             <div className="main-area">

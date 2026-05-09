@@ -15,11 +15,12 @@
 .input-group input, .input-group textarea {
     width: 100%;
     padding: 14px;
+    font-family: var(--font-subtitulos);
 
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
 
-    color: #fff;
+    color: var(--branco);
     outline: none;
     transition: 0.25s;
 
@@ -50,7 +51,7 @@ textarea:-webkit-autofill {
   .input-group textarea {
     height: 40px;
     padding: 12px;
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
 }
 
@@ -73,6 +74,6 @@ textarea:-webkit-autofill {
   .input-group input,
   .input-group textarea {
     padding: 16px;
-    font-size: 1.05rem;
+    font-size: 0.9em;
   }
 }
