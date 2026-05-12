@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.busca-horario{
+    flex-direction: row-reverse;
+}
+
+.filtro-data{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.filtro-data input{
+    border: 1px solid var(--dourado-principal);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--cinza-texto);
+    text-align: center;
+    font-size: 0.9em;
+    font-family: var(--font-subtitulos);
+    padding: 8px 12px 8px 12px;
+}
+
+.filtro-data input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+    filter: invert(1);
+}
