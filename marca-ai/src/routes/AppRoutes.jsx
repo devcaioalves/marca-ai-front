@@ -11,14 +11,6 @@ import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
 import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
-// Descomente as páginas conforme for criando:
-// import CreateAnnounce from "../pages/CreateAnnounce.jsx";
-// import UserSettings from "../pages/UserSettings.jsx";
-// import ProposalsPage from "../pages/ProposalsPage.jsx";
-// import SearchResults from "../pages/SearchResults.jsx";
-
-import Service from "../pages/servicos/Service.jsx";
-import Horario from "../pages/horarios/Horario.jsx";
 
 export default function AppRoutes() {
     return (
@@ -30,13 +22,6 @@ export default function AppRoutes() {
             <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
             <Route path="/alterar-senha" element={<AlterarSenha />} />
-            <Route path="/criar-servico" element={<ServiceForm />} />
-            <Route path="/atualizar-servico/:id" element={<ServiceForm/>}/>
-            <Route path="/criar-horario" element={<HorarioForm />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/servicos" element={<Service />} />
-            <Route path="/horarios" element={<Horario />} />
-            <Route path="/atualizar-horario/:id" element={<HorarioForm />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
@@ -44,11 +29,7 @@ export default function AppRoutes() {
                 <Route path="/criar-servico" element={<ServiceForm />} />
                 <Route path="/atualizar-servico/:id" element={<ServiceForm/>}/>
                 <Route path="/criar-horario" element={<HorarioForm />} />
-                <Route path="/servicos" element={<Service />} />
-                {/*<Route path="/create-announce" element={<CreateAnnounce />} />*/}
-                {/*<Route path="/user-settings" element={<UserSettings />} />*/}
-                {/*<Route path="/proposals" element={<ProposalsPage />} />*/}
-                {/*<Route path="/search" element={<SearchResults />} />*/}
+                <Route path="/servicos" element={<ServiceForm />} />
             </Route>
         </Routes>
     );

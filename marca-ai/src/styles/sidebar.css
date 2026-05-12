@@ -129,6 +129,65 @@ footer{
     display: none !important;
 }
 
+.perfil-popup{
+
+    position: fixed;
+
+    left: 28px;
+
+    bottom: 70px;
+
+    width: 220px;
+
+    background: #1A1A1A;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    border-radius: 18px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    z-index: 99999;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+    animation: popupShow 0.2s ease;
+}
+
+/* LINKS */
+
+.perfil-popup a{
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-family: var(--font-subtitulos);
+
+    font-size: 0.9rem;
+
+    transition: all 0.2s ease;
+}
+
+.perfil-popup a:hover{
+
+    background: rgba(245, 208, 138, 0.12);
+
+    color: #f5d08a;
+}
+
 /* ========================= */
 /* MOBILE */
 /* ========================= */
@@ -262,6 +321,15 @@ footer{
         );
 
         color: black;
+    }
+
+    .perfil-popup{
+
+        left: auto;
+
+        right: 18px;
+
+        bottom: 90px;
     }
 }
 

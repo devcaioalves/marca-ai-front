@@ -2,6 +2,9 @@ import "../../styles/header.css";
 import { FiBell } from "react-icons/fi";
 import { BsStars } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+
+
 
 export default function Header(){
 
@@ -25,6 +28,30 @@ export default function Header(){
     // DEPOIS TROCAR PELA API DE NOTIFICAÇÕES
     const temNotificação = true;
 
+    const [notificacaoOpen, setNotificacaoOpen] = useState(false);
+    
+    const notificacaoRef = useRef(null);
+
+    useEffect(() => {
+
+    function handleClickOutside(event){
+
+        if(
+            notificacaoRef.current &&
+            !notificacaoRef.current.contains(event.target)
+        ){
+            setNotificacaoOpen(false);
+        }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+}, []);
+
     return(
         <>
             <div className="header-left">
@@ -35,8 +62,8 @@ export default function Header(){
                 </span>
             </div>
 
-            <div className="header-right">
-                <Link to="/notificacacoes" className="notificacao-link">
+            <div className="header-right" ref={notificacaoRef}>
+                <Link className="notificacao-link" onClick={() => setNotificacaoOpen(!notificacaoOpen)}>
                     <FiBell className="icone-sino"/>
                     {temNotificação && <span className="badge"></span>}
                 </Link>
@@ -46,6 +73,36 @@ export default function Header(){
                     <span>{formatar(diaSemana)}</span>
                 </div>
             </div>
+
+            {notificacaoOpen && (
+
+                <div className="notificacao-popup">
+
+                    <div className="notificacao-item">
+                        <strong>Novo agendamento</strong>
+                        <span>Maria Silva agendou às 14:00</span>
+                    </div>
+
+                    <div className="notificacao-item">
+                        <strong>Horário remarcado</strong>
+                        <span>Ana Souza alterou o horário</span>
+                    </div>
+
+                    <div className="notificacao-item">
+                        <strong>Pagamento confirmado</strong>
+                        <span>Pagamento recebido hoje</span>
+                    </div>
+
+                    <Link
+                        to="/notificacoes"
+                        className="ver-todas"
+                        onClick={() => setNotificacaoOpen(false)}
+                    >
+                        Ver todas
+                    </Link>
+
+                </div>
+            )}
         </>
     )
 };
