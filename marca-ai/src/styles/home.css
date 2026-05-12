@@ -3,7 +3,8 @@
 .hero {
   min-height: 100vh;
   position: relative;
-  background-image: url("../assets/fundo-home2.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)), url("../assets/fundo-home2.webp");
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
   background-position: center;
@@ -39,7 +40,7 @@
   height: auto;
   
   
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.4));
 
   -webkit-mask-image:
     linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),

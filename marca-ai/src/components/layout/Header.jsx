@@ -30,6 +30,9 @@ export default function Header(){
             <div className="header-left">
                 <h1>Olá, Designer! <BsStars className="icone-brilho"/></h1>
                 <p>Bem vinda ao seu painel de controle.</p>
+                <span className="mobile-date">
+                    {formatar(dataAtual)} • {formatar(diaSemana)}
+                </span>
             </div>
 
             <div className="header-right">
