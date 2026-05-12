@@ -5,6 +5,7 @@ import { FaRegCalendarAlt , FaRegUser, FaRegClock, FaRegMoneyBillAlt  } from "re
 import "../styles/cardResumo.css";
 import { useState } from "react";
 import Calendario from "../components/dashboard/Calendario";
+import Header from "../components/layout/Header";
 
 
 export default function Dashboard(){
@@ -87,7 +88,7 @@ export default function Dashboard(){
     const agendamentosFiltrados = agendamentos.filter(agendamento => agendamento.data === formatarData(dataSelecionada));
 
     return(
-        <Layout>
+        <Layout header={<Header />}>
             <div className="dashboard-container">
                 <div className="cards-resumo">
                 
