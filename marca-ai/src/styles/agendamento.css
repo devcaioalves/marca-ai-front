@@ -218,3 +218,28 @@
 .react-calendar__month-view__days__day--neighboringMonth {
     color: #555;
 }
+
+@media (max-width: 768px){
+
+    .dashboard{
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .lista-agendamentos{
+
+        margin-top: 18px;
+
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+    .calendar-wrapper{
+        display: none;
+    }
+}

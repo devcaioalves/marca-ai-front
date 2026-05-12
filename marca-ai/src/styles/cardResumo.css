@@ -57,3 +57,91 @@
 .card-footer a:hover{
     text-decoration: underline;
 }
+
+@media (max-width: 768px){
+
+    /* ========================= */
+    /* CARDS */
+    /* ========================= */
+
+    .cards-resumo{
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 10px;
+
+        margin-top: 20px;
+    }
+
+    .card-main{
+
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 110px;
+    }
+
+    /* 4º CARD */
+
+    .card-main:last-child{
+
+        grid-column: span 3;
+    }
+
+    /* ========================= */
+    /* CARD INTERNO */
+    /* ========================= */
+
+    .card{
+
+        padding: 14px;
+    }
+
+    .card-header span{
+
+        font-size: 1rem;
+    }
+
+    .card-header h3{
+
+        font-size: 0.65rem;
+
+        margin-top: 6px;
+    }
+
+    .card-value h2{
+
+        margin-top: 8px;
+
+        font-size: 1rem;
+    }
+
+    .card-footer{
+
+        margin-top: 6px;
+
+        font-size: 0.62rem;
+    }
+
+    /* ========================= */
+    /* AGENDAMENTOS */
+    /* ========================= */
+
+    .dashboard{
+
+        display: flex;
+
+        flex-direction: column;
+
+        margin-top: 18px;
+    }
+
+    /* ESCONDE CALENDÁRIO */
+
+    .calendar-wrapper{
+        display: none;
+    }
+}

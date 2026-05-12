@@ -1,21 +1,26 @@
 import { Routes, Route } from "react-router-dom";
 
+import PrivateRoute from "../components/common/PrivateRoute.jsx";
+
 import Home  from "../pages/Home.jsx";
 import Login from "../pages/auth/Login.jsx";
 import CriarConta from "../pages/auth/CriarConta.jsx";
-import PrivateRoute from "../components/common/PrivateRoute.jsx";
 import EsqueceuSenha from "../pages/auth/EsqueceuSenha.jsx";
 import RecebeCodigo from "../pages/auth/RecebeCodigo.jsx";
 import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
 import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
+<<<<<<< Updated upstream
 // Descomente as páginas conforme for criando:
 //import Home from "../pages/Home.jsx";
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
 // import UserSettings from "../pages/UserSettings.jsx";
 // import ProposalsPage from "../pages/ProposalsPage.jsx";
 // import SearchResults from "../pages/SearchResults.jsx";
+=======
+import Service from "../pages/servicos/Service.jsx";
+>>>>>>> Stashed changes
 
 export default function AppRoutes() {
     return (
@@ -27,13 +32,20 @@ export default function AppRoutes() {
             <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
             <Route path="/alterar-senha" element={<AlterarSenha />} />
+<<<<<<< Updated upstream
             <Route path="/criar-servico" element={<ServiceForm />} />
             <Route path="/criar-horario" element={<HorarioForm />} />
             <Route path="/dashboard" element={<Dashboard />} />
+=======
+>>>>>>> Stashed changes
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
-                {/*<Route path="/home" element={<Home />} />*/}
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/criar-servico" element={<ServiceForm />} />
+                <Route path="/atualizar-servico/:id" element={<ServiceForm/>}/>
+                <Route path="/criar-horario" element={<HorarioForm />} />
+                <Route path="/servicos" element={<Service />} />
                 {/*<Route path="/create-announce" element={<CreateAnnounce />} />*/}
                 {/*<Route path="/user-settings" element={<UserSettings />} />*/}
                 {/*<Route path="/proposals" element={<ProposalsPage />} />*/}

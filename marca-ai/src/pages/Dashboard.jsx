@@ -131,10 +131,12 @@ export default function Dashboard(){
                             dataSelecionada={dataSelecionada}
                         />
 
-                        <Calendario
-                            dataSelecionada={dataSelecionada}
-                            setDataSelecionada={setDataSelecionada}
-                        />
+                        <div className="calendar-wrapper">
+                            <Calendario
+                                dataSelecionada={dataSelecionada}
+                                setDataSelecionada={setDataSelecionada}
+                            />
+                        </div>
                 </div>
             </div>
         </Layout>
