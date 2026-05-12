@@ -11,16 +11,13 @@ import AlterarSenha from "../pages/auth/AlterarSenha.jsx";
 import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
-<<<<<<< Updated upstream
 // Descomente as páginas conforme for criando:
-//import Home from "../pages/Home.jsx";
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
 // import UserSettings from "../pages/UserSettings.jsx";
 // import ProposalsPage from "../pages/ProposalsPage.jsx";
 // import SearchResults from "../pages/SearchResults.jsx";
-=======
+
 import Service from "../pages/servicos/Service.jsx";
->>>>>>> Stashed changes
 
 export default function AppRoutes() {
     return (
@@ -32,12 +29,11 @@ export default function AppRoutes() {
             <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
             <Route path="/receber-codigo" element={<RecebeCodigo />} />
             <Route path="/alterar-senha" element={<AlterarSenha />} />
-<<<<<<< Updated upstream
             <Route path="/criar-servico" element={<ServiceForm />} />
+            <Route path="/atualizar-servico/:id" element={<ServiceForm/>}/>
             <Route path="/criar-horario" element={<HorarioForm />} />
             <Route path="/dashboard" element={<Dashboard />} />
-=======
->>>>>>> Stashed changes
+            <Route path="/servicos" element={<Service />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
