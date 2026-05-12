@@ -1,7 +1,6 @@
 import "../../styles/sidebar.css";
 import logo from "../../assets/logo-salão-trasparente.png";
-import { useState } from "react";
-
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import {
@@ -9,7 +8,9 @@ import {
     FaCalendarAlt,
     FaUser,
     FaBell,
-    FaEllipsisH
+    FaEllipsisH,
+    FaSignOutAlt,
+    FaCog
 } from "react-icons/fa";
 
 import {
@@ -22,6 +23,30 @@ import { BsClipboardCheck } from "react-icons/bs";
 export default function Sidebar(){
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [perfilOpen, setPerfilOpen] = useState(false);
+
+    const sidebarPopupRef = useRef(null);
+
+    useEffect(() => {
+
+    function handleClickOutside(event){
+
+        if(
+            sidebarPopupRef.current &&
+            !sidebarPopupRef.current.contains(event.target)
+        ){
+            setMenuOpen(false);
+            setPerfilOpen(false);
+        }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+}, []);
 
     return(
         <section className="sidebar-container">
@@ -30,43 +55,43 @@ export default function Sidebar(){
                 <img src={logo} alt="Logo" className="logo-sidebar" />
             </div>
 
-            <div className="menu-sidebar">
+            <div className="menu-sidebar" ref={sidebarPopupRef}>
 
                 <nav className="menu">
 
-                    <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+                    <Link to="/dashboard" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <FaHome className="icon-sidebar" />
                         <span>Dashboard</span>
                     </Link>
 
-                    <Link to="/agendamentos" onClick={() => setMenuOpen(false)}>
+                    <Link to="/agendamentos" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <BsClipboardCheck className="icon-sidebar" />
                         <span>Agendamentos</span>
                     </Link>
 
-                    <Link to="/calendario" onClick={() => setMenuOpen(false)}>
+                    <Link to="/calendario" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <FaCalendarAlt className="icon-sidebar" />
                         <span>Calendário</span>
                     </Link>
 
                     {/* SOMENTE DESKTOP */}
 
-                    <Link to="/servicos" className="desktop-item" onClick={() => setMenuOpen(false)}>
+                    <Link to="/servicos" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <MdDesignServices className="icon-sidebar" />
                         <span>Serviços</span>
                     </Link>
 
-                    <Link to="/horarios" className="desktop-item" onClick={() => setMenuOpen(false)}>
+                    <Link to="/horarios" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <MdAccessTime className="icon-sidebar" />
                         <span>Horários</span>
                     </Link>
 
-                    <Link to="/clientes" className="desktop-item" onClick={() => setMenuOpen(false)}>
+                    <Link to="/clientes" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <FaUser className="icon-sidebar" />
                         <span>Clientes</span>
                     </Link>
 
-                    <Link to="/notificacoes" className="desktop-item" onClick={() => setMenuOpen(false)}>
+                    <Link to="/notificacoes" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <FaBell className="icon-sidebar" />
                         <span>Notificações</span>
                     </Link>
@@ -75,13 +100,22 @@ export default function Sidebar(){
 
                     <Link
                         className="mobile-item"
-                        onClick={() => setMenuOpen(!menuOpen)}
+                        onClick={() => {
+                            setPerfilOpen(false);
+                            setMenuOpen(!menuOpen);
+                        }}
                     >
                         <FaEllipsisH className="icon-sidebar" />
                         <span>Mais</span>
                     </Link>
 
-                    <Link to="/perfil" className="mobile-item" onClick={() => setMenuOpen(false)}>
+                    <Link
+                        className="mobile-item"
+                        onClick={() => {
+                            setMenuOpen(false);
+                            setPerfilOpen(!perfilOpen);
+                        }}
+                    >
                         <FaUser className="icon-sidebar" />
                         <span>Perfil</span>
                     </Link>
@@ -94,7 +128,10 @@ export default function Sidebar(){
                         <Link 
                             className="mobile-item"
                             to="/servicos"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
                         >
                             <MdDesignServices className="icon-sidebar" />
                             <span>Serviços</span>
@@ -103,7 +140,10 @@ export default function Sidebar(){
                         <Link 
                             className="mobile-item"
                             to="/horarios"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
                         >
                             <MdAccessTime className="icon-sidebar" />
                             <span>Horários</span>
@@ -112,7 +152,10 @@ export default function Sidebar(){
                         <Link 
                             className="mobile-item"
                             to="/clientes"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
                         >
                             <FaUser className="icon-sidebar" />
                             <span>Clientes</span>
@@ -121,7 +164,10 @@ export default function Sidebar(){
                         <Link 
                             className="mobile-item"
                             to="/notificacoes"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
                         >
                             <FaBell className="icon-sidebar" />
                             <span>Notificações</span>
@@ -129,10 +175,55 @@ export default function Sidebar(){
 
                     </div>
                 )}
+
+                {perfilOpen && (
+                    <div className="perfil-popup">
+
+                        <Link
+                            to="/perfil"
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
+                        >
+                            <FaUser className="icon-sidebar" />
+                            <span>Perfil</span>
+                        </Link>
+
+                        <Link
+                            to="/configuracoes"
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
+                        >
+                            <FaCog className="icon-sidebar" />
+                            <span>Configurações</span>
+                        </Link>
+
+                        <Link
+                            to="/logout"
+                            onClick={() => {
+                                setMenuOpen(false);
+                                setPerfilOpen(!perfilOpen);
+                            }}
+                        >
+                            <FaSignOutAlt className="icon-sidebar" />
+                            <span>Sair</span>
+                        </Link>
+
+                    </div>
+                )}
             </div>
 
             <footer>
-                <NavLink to="/perfil" className="perfil">
+                <NavLink
+                    className="perfil"
+                    onClick={() => {
+                        setMenuOpen(false);
+                        setPerfilOpen(!perfilOpen);
+                    }}
+                >
                     <FaUser className="icone-perfil"/>
 
                     <div className="perfil-texto">
