@@ -87,13 +87,12 @@ export default function ServiceForm() {
 
         }else{
           await cadastrarServico();
+          setNome("");
+          setDescricao("");
+          setValor("");
+          setDuracao("");
         }
       }catch(error){
-        console.log(error);
-
-        console.log(error.response);
-
-        console.log(error.response?.data);
         const mensagem = error.response?.data?.message ||
         "Erro ao salvar serviço!";
         toast.error(mensagem);
