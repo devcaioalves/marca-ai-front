@@ -11,6 +11,7 @@ import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
 import Service from "../pages/servicos/Service.jsx";
+import Horario from "../pages/horarios/Horario.jsx";
 // Descomente as páginas conforme for criando:
 // import CreateAnnounce from "../pages/CreateAnnounce.jsx";
 // import UserSettings from "../pages/UserSettings.jsx";
@@ -32,6 +33,8 @@ export default function AppRoutes() {
             <Route path="/criar-horario" element={<HorarioForm />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/servicos" element={<Service />} />
+            <Route path="/horarios" element={<Horario />} />
+            <Route path="/atualizar-horario/:id" element={<HorarioForm />} />
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
