@@ -14,6 +14,7 @@ import Dashboard from "../pages/Dashboard.jsx";
 import Service from "../pages/servicos/Service.jsx";
 import Horario from "../pages/horarios/Horario.jsx";
 
+
 export default function AppRoutes() {
     return (
         <Routes>
@@ -34,6 +35,7 @@ export default function AppRoutes() {
                 <Route path="/atualizar-horario/:id" element={<HorarioForm />} />
                 <Route path="/servicos" element={<Service />} />
                 <Route path="/horarios" element={<Horario />} />
+                <Route path="/servicos" element={<ServiceForm />} />
             </Route>
         </Routes>
     );
