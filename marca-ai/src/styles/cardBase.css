@@ -6,7 +6,7 @@
     align-items: center;
 
     width: 100%;
-    max-width: 80%;
+    max-width: 85%;
     margin: auto;
     
     margin-top: 35px;
@@ -21,7 +21,7 @@
 }
 
 .card-left{
-    width: 300px;
+    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -195,5 +195,124 @@
     color: var(--cinza-texto);
     font-family: var(--font-subtitulos);
     font-size: 1em;
+}
+
+@media (max-width: 1023px){
+
+    .card-base{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .card-left{
+        width: 100%;
+    }
+
+    .card-conteudo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .card-center{
+        margin-left: auto;
+        margin-top: -40px;
+    }
+
+    .card-right{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-titulo p{
+        font-size: 0.78em;
+    }
+
+    .card-status{
+        width: 100%;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .switch{
+        width: 40px;
+        height: 22px;
+    }
+
+    .slider::before{
+        width: 15px;
+        height: 16px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    .switch input:checked + .slider::before{
+        transform: translateX(20px);
+    }
+
+    .btn-editar,
+    .btn-excluir{
+        padding: 8px 14px;
+        font-size: 0.7em;
+    }
+
+    .sem-informacao{
+        text-align: center;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px){
+
+    .card-base{
+        max-width: 95%;
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .card-left{
+        width: 50%;
+    }
+
+    .card-titulo p{
+        font-size: 0.80em;
+    }
+
+    .card-info{
+        gap: 12px;
+    }
+
+    .card-status span{
+        font-size: 0.8em;
+    }
+
+    .switch{
+        width: 40px;
+        height: 22px;
+    }
+
+    .slider::before{
+        width: 15px;
+        height: 16px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    .switch input:checked + .slider::before{
+        transform: translateX(20px);
+    }
+
+    .btn-editar,
+    .btn-excluir{
+        padding: 8px 12px;
+        font-size: 0.7em;
+    }
+
+    .sem-informacao{
+        text-align: center;
+    }
 }
 

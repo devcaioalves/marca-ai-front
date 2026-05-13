@@ -12,11 +12,6 @@ import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
 import Service from "../pages/servicos/Service.jsx";
 import Horario from "../pages/horarios/Horario.jsx";
-// Descomente as páginas conforme for criando:
-// import CreateAnnounce from "../pages/CreateAnnounce.jsx";
-// import UserSettings from "../pages/UserSettings.jsx";
-// import ProposalsPage from "../pages/ProposalsPage.jsx";
-// import SearchResults from "../pages/SearchResults.jsx";
 
 export default function AppRoutes() {
     return (
@@ -38,11 +33,21 @@ export default function AppRoutes() {
 
             {/* Rotas privadas */}
             <Route element={<PrivateRoute />}>
+<<<<<<< Updated upstream
                 {/*<Route path="/home" element={<Home />} />*/}
                 {/*<Route path="/create-announce" element={<CreateAnnounce />} />*/}
                 {/*<Route path="/user-settings" element={<UserSettings />} />*/}
                 {/*<Route path="/proposals" element={<ProposalsPage />} />*/}
                 {/*<Route path="/search" element={<SearchResults />} />*/}
+=======
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/criar-servico" element={<ServiceForm />} />
+                <Route path="/atualizar-servico/:id" element={<ServiceForm/>}/>
+                <Route path="/criar-horario" element={<HorarioForm />} />
+                <Route path="/atualizar-horario/:id" element={<HorarioForm />} />
+                <Route path="/servicos" element={<Service />} />
+                <Route path="/horarios" element={<Horario />} />
+>>>>>>> Stashed changes
             </Route>
         </Routes>
     );

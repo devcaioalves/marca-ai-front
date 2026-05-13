@@ -27,7 +27,7 @@ export default function CardBase({ titulo, subtitulo, children, status, acoes}) 
                 )}
 
                 {acoes && (
-                    <div className="card-rigth">
+                    <div className="card-right">
                         {acoes}
                     </div>
                 )}
