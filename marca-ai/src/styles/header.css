@@ -78,3 +78,102 @@
     font-weight: bolder;
     font-size: 0.8em;
 }
+
+.mobile-date{
+    display: none;
+}
+
+@media (max-width: 768px){
+
+    .header-area{
+
+        padding: 18px 18px 14px 18px;
+    }
+
+    .header-left{
+
+        margin: 0;
+    }
+
+    .header-left h1{
+
+        font-size: 1.35rem;
+
+        display: flex;
+        align-items: center;
+
+        gap: 6px;
+    }
+
+    .header-left p{
+
+        margin-top: 4px;
+
+        font-size: 0.78rem;
+
+        opacity: 0.7;
+    }
+
+    .header-right{
+
+        margin: 0;
+
+        gap: 14px;
+    }
+
+    /* ESCONDE A CAIXA GRANDE DA DATA */
+
+    .data-container{
+        display: none;
+    }
+
+    .mobile-date{
+
+        display: block;
+
+        margin-top: 6px;
+
+        color: var(--dourado-principal);
+
+        font-size: 0.72rem;
+
+        font-family: var(--font-subtitulos);
+
+        font-weight: 400;
+    }
+
+    /* SINO */
+
+    .icone-sino{
+
+        font-size: 1.35rem;
+    }
+
+    .notificacao-link{
+
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+
+        background-color: #1A1A1A;
+    }
+
+    /* BADGE */
+
+    .badge{
+
+        width: 9px;
+        height: 9px;
+
+        top: 10px;
+        right: 10px;
+
+        border: 2px solid #1A1A1A;
+    }
+}

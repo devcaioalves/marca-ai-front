@@ -1,42 +1,68 @@
-@charset "UTF-08";
+@charset "UTF-8";
+
+/* ========================= */
+/* SIDEBAR DESKTOP */
+/* ========================= */
 
 .sidebar-container{
     height: 100%;
+
     display: flex;
     flex-direction: column;
+
+    background-color: #1A1A1A;
 }
+
+/* LOGO */
 
 .logo-img{
     display: flex;
     justify-content: center;
-    padding: 0;
+
+    padding: 10px 0;
 }
 
 .logo-sidebar{
     width: 120px;
 }
 
+/* MENU */
+
 .menu{
     display: flex;
     flex-direction: column;
+
     width: 220px;
 }
 
-.menu a {
+/* LINKS */
+
+.menu a{
+    display: flex;
+    align-items: center;
+
     padding: 12px 15px;
     margin-top: 10px;
+
     text-decoration: none;
+
     color: var(--branco);
+
     font-family: var(--font-subtitulos);
     font-weight: lighter;
     font-size: 0.9em;
+
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    transition: all 0.20s ease;
+    transition: all 0.2s ease;
 }
 
-.menu a:hover, .perfil:hover {
+/* HOVER */
+
+.menu a:hover,
+.perfil:hover{
+
     background: linear-gradient(
         145deg,
         #f5d08a 0%,
@@ -49,26 +75,42 @@
     color: black;
 }
 
+/* ÍCONES */
+
 .icon-sidebar{
     margin-right: 8px;
+    font-size: 1rem;
 }
+
+/* FOOTER */
 
 footer{
     margin-top: auto;
 }
 
+/* PERFIL */
+
 .perfil{
     display: flex;
     align-items: center;
+
     width: 220px;
     height: 50px;
+
     margin-bottom: 5px;
+
     gap: 12px;
+
     padding: 12px 15px;
+
     text-decoration: none;
+
     color: var(--branco);
+
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+
+    transition: all 0.2s ease;
 }
 
 .perfil-texto p{
@@ -79,8 +121,6 @@ footer{
 
 .icone-perfil{
     font-size: 1em;
-<<<<<<< Updated upstream
-=======
 }
 
 /* MOBILE ONLY */
@@ -386,5 +426,4 @@ footer{
         opacity: 1;
         transform: translateY(0);
     }
->>>>>>> Stashed changes
 }
