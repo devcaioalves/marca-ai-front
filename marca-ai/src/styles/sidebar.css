@@ -172,8 +172,7 @@ footer{
 
     text-decoration: none;
 
-    color: white;
-
+    color: var(--branco);
     font-family: var(--font-subtitulos);
 
     font-size: 0.9rem;
@@ -271,9 +270,9 @@ footer{
         margin: 0;
         padding: 0;
 
-        border-radius: 14px;
+        border-radius: 12px;
 
-        color: white;
+        color: var(--branco);
 
         transition: all 0.2s ease;
     }
@@ -295,7 +294,7 @@ footer{
 
         margin-right: 0;
 
-        font-size: 2rem;
+        font-size: 1.8em;
     }
 
     /* ITEM ATIVO */
@@ -377,7 +376,10 @@ footer{
 
     text-decoration: none;
 
-    color: white;
+    color: var(--branco);
+    font-family: var(--font-subtitulos);
+    font-weight: lighter;
+    font-size: 0.9em;
 
     transition: 0.2s;
 }

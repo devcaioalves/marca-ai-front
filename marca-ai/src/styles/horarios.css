@@ -24,3 +24,24 @@
     cursor: pointer;
     filter: invert(1);
 }
+
+@media (max-width: 1024px) {
+    .busca-horario{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .filtro-data{
+        margin-left: 0;
+    }
+
+    .filtro-data input{
+        font-size: 0.85em;
+        padding: 7px 10px 7px 8px;
+    }
+
+    
+
+    
+}

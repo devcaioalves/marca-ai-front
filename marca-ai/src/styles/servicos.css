@@ -11,7 +11,7 @@
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-    margin-right: 20px;
+    padding-bottom: 0 20px;
 }
 
 .filtro p.ativo{
@@ -37,4 +37,16 @@
 .filtro p:hover{
     color: var(--dourado-principal);
     border: 1px solid var(--dourado-principal);
+}
+
+@media (max-width: 1024px) {
+    .busca{
+        flex-direction: column-reverse;
+    }
+
+    .filtro p{
+        font-size: 0.8em;
+        padding: 8px;
+        width: 90px;
+    } 
 }
