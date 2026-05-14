@@ -15,7 +15,7 @@ import CardBase from "../../components/common/CardBase";
 import ModalConfirmacao from "../../components/common/ModalConfirmacao";
 
 import {
-    deletar,
+    cancelar,
     listarPorData,
     listarTodos
 } from "../../services/agendamentoService";
@@ -89,9 +89,9 @@ export default function Agendamento(){
 
         try{
 
-            await deletar(agendamentoSelecionado.id);
+            await cancelar(agendamentoSelecionado.id);
 
-            toast.success("Agendamento excluído com sucesso!");
+            toast.success("Agendamento cancelado com sucesso!");
 
             carregarAgendamentos();
 
@@ -101,7 +101,7 @@ export default function Agendamento(){
 
             const mensagem =
                 error.response?.data?.message ||
-                "Erro ao excluir agendamento!";
+                "Erro ao cancelar agendamento!";
 
             toast.error(mensagem);
         }
