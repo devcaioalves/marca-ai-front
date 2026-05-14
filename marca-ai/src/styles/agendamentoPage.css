@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.busca-horario{
+    flex-direction: row-reverse;
+}
+
+.filtro-data{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.filtro-data input{
+    border: 1px solid var(--dourado-principal);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--cinza-texto);
+    text-align: center;
+    font-size: 0.9em;
+    font-family: var(--font-subtitulos);
+    padding: 8px 12px;
+}
+
+.filtro-data input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.agendamentos-container{
+    width: 100%;
+}
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-info span{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--cinza-texto);
+
+    font-family: var(--font-subtitulos);
+    font-size: 0.9rem;
+}
+
+.icone{
+    color: var(--dourado-principal);
+}
+
+@media (max-width: 1024px){
+
+    .busca-horario{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .filtro-data{
+        margin-left: 0;
+    }
+
+    .filtro-data input{
+        font-size: 0.85em;
+        padding: 7px 10px 7px 8px;
+    }
+}
+
+@media (max-width: 768px){
+
+    .busca-horario{
+        flex-direction: column-reverse;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .filtro{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filtro-data{
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .filtro-data input{
+        width: 100%;
+    }
+
+    .card-info span{
+        font-size: 0.8rem;
+    }
+}
