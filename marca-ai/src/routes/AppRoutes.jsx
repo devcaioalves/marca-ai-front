@@ -15,6 +15,7 @@ import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
 import Agendamentos from "../pages/agendamentos/Agendamento.jsx";
 import Calendario from "../pages/calendario/Calendario.jsx";
+import Notificacoes from "../pages/notificacoes/Notificacoes.jsx";
 
 
 export default function AppRoutes() {
@@ -39,6 +40,7 @@ export default function AppRoutes() {
                 <Route path="/criar-servico" element={<ServiceForm />} />
                 <Route path="/agendamentos" element={<Agendamentos />} />
                 <Route path="/calendario" element={<Calendario />} />
+                <Route path="/notificacoes" element={<Notificacoes />} />
             </Route>
         </Routes>
     );
