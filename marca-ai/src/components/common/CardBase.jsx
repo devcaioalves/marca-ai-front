@@ -1,9 +1,9 @@
 import "../../styles/cardBase.css";
 
-export default function CardBase({ titulo, subtitulo, children, status, acoes}) {
+export default function CardBase({ titulo, subtitulo, children, status, acoes, className = ""}) {
 
     return (
-        <div className="card-base">
+        <div className={`card-base ${className}`}>
 
             <div className="card-left">
                 
