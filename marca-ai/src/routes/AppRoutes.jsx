@@ -13,6 +13,9 @@ import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
 import Service from "../pages/servicos/Service.jsx";
 import Horario from "../pages/horarios/Horario.jsx";
+import Perfil from "../pages/perfil/Perfil.jsx";
+import PerfilForm from "../pages/perfil/PerfilForm.jsx";
+import AlterarSenhaPerfil from "../pages/perfil/AlterarSenhaPerfil.jsx";
 
 
 export default function AppRoutes() {
@@ -36,6 +39,9 @@ export default function AppRoutes() {
                 <Route path="/servicos" element={<Service />} />
                 <Route path="/horarios" element={<Horario />} />
                 <Route path="/servicos" element={<ServiceForm />} />
+                <Route path="/perfil" element={<Perfil />} />
+                <Route path="/editar-perfil" element={<PerfilForm />} />
+                <Route path="/alterar-senha-perfil" element={<AlterarSenhaPerfil />} />
             </Route>
         </Routes>
     );
