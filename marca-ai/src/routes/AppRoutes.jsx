@@ -13,9 +13,13 @@ import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import Horario from "../pages/horarios/Horario.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
+
+import Perfil from "../pages/perfil/Perfil.jsx";
+import PerfilForm from "../pages/perfil/PerfilForm.jsx";
+import AlterarSenhaPerfil from "../pages/perfil/AlterarSenhaPerfil.jsx";
 import Agendamentos from "../pages/agendamentos/Agendamento.jsx";
 import Notificacoes from "../pages/notificacoes/Notificacoes.jsx";
-import Perfil from "../pages/perfil/Perfil.jsx";
+
 
 
 export default function AppRoutes() {
@@ -37,10 +41,15 @@ export default function AppRoutes() {
                 <Route path="/criar-horario" element={<HorarioForm />} />
                 <Route path="/atualizar-horario/:id" element={<HorarioForm />} />
                 <Route path="/servicos" element={<Service />} />
+
+                <Route path="/horarios" element={<Horario />} />
+                <Route path="/servicos" element={<ServiceForm />} />
+                <Route path="/perfil" element={<Perfil />} />
+                <Route path="/editar-perfil" element={<PerfilForm />} />
+                <Route path="/alterar-senha-perfil" element={<AlterarSenhaPerfil />} />
                 <Route path="/criar-servico" element={<ServiceForm />} />
                 <Route path="/agendamentos" element={<Agendamentos />} />
                 <Route path="/notificacoes" element={<Notificacoes />} />
-                <Route path="/perfil" element={<Perfil />} />
             </Route>
         </Routes>
     );

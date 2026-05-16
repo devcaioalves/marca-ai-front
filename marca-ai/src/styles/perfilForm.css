@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.perfil-grid{
+    display: flex;
+    justify-content: space-between;
+}
+
+.perfil-form-card{
+    width: 100%;
+    padding: 24px;
+}
+
+@media (max-width: 768px){
+    .perfil-grid{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
