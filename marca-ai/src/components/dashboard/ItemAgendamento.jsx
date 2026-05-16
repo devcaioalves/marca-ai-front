@@ -29,16 +29,10 @@ export default function ItemAgendamento({ agendamento }) {
     function getStatus(status){
         return status ? status.toLowerCase() : "";
     }
-
-    // LEVA PARA TELA DE DETALHES DO AGENDAMENTO 
-    // RETORNA (BUSCA) AGENDAMENTO POR DATA
-    // ADICIONA A API CCORRESPONDENTE
-    function handleClick(){
-        navigate(`/agendamento?data=${agendamento.data}&id=${agendamento.id}`);
-    }
+    
 
     return (
-        <div className="agendamento-item" onClick={handleClick}>
+        <div className="agendamento-item">
 
             <div className="agendamento-left">
                 

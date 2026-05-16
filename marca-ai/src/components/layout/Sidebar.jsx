@@ -76,11 +76,6 @@ export default function Sidebar(){
 
                     {/* SOMENTE DESKTOP */}
 
-                    <Link to="/calendario" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
-                        <FaCalendarAlt className="icon-sidebar" />
-                        <span>Calendário</span>
-                    </Link>
-
                     <Link to="/horarios" className="desktop-item" onClick={() => {setMenuOpen(false); setPerfilOpen(false);}}>
                         <MdAccessTime className="icon-sidebar" />
                         <span>Horários</span>

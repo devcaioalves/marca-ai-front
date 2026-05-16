@@ -4,7 +4,7 @@ import ListaAgendamento from "../components/dashboard/ListaAgendamento";
 import { FaRegCalendarAlt , FaRegUser, FaRegClock, FaRegMoneyBillAlt  } from "react-icons/fa";
 import "../styles/cardResumo.css";
 import { useState } from "react";
-import Calendario from "../components/dashboard/Calendario";
+import Calendario from "../components/dashboard/Calendario"
 import Header from "../components/layout/Header";
 
 

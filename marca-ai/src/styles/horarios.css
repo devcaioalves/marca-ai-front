@@ -28,12 +28,13 @@
 @media (max-width: 1024px) {
     .busca-horario{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         gap: 30px;
     }
 
     .filtro-data{
         margin-left: 0;
+        margin: auto;
     }
 
     .filtro-data input{

@@ -12,10 +12,10 @@
 .filtro-notificacao{
 
     display: flex;
-
+    margin-left: 18px;
     gap: 20px;
 
-    margin-bottom: 25px;
+    
 }
 
 .filtro-notificacao p{
@@ -127,7 +127,7 @@
 @media (max-width: 768px){
 
     .filtro-notificacao{
-
+        margin-left: 0;
         justify-content: center;
     }
 
