@@ -8,8 +8,12 @@ import {
     FaCalendarAlt,
     FaEdit,
     FaTrash,
-    FaUser
+    FaUser,
 } from "react-icons/fa";
+
+import {
+    MdDesignServices,
+} from "react-icons/md";
 
 import CardBase from "../../components/common/CardBase";
 import ModalConfirmacao from "../../components/common/ModalConfirmacao";
@@ -29,7 +33,29 @@ export default function Agendamento(){
     const navigate = useNavigate();
 
     // LISTA DE AGENDAMENTOS
-    const [agendamentos, setAgendamentos] = useState([]);
+    const [agendamentos, setAgendamentos] = useState([
+        {
+            id: 1,
+            data: "2026-05-18",
+            horaInicio: "08:00",
+            clienteNome: "Maria Clara",
+            servicoNome: "Corte feminino"
+        },
+        {
+            id: 2,
+            data: "2026-05-18",
+            horaInicio: "10:30",
+            clienteNome: "João Pedro",
+            servicoNome: "Barba"
+        },
+        {
+            id: 3,
+            data: "2026-05-18",
+            horaInicio: "14:00",
+            clienteNome: "Ana Beatriz",
+            servicoNome: "Escova"
+        }
+    ]);
 
     // FILTRO
     const [filtro, setFiltro] = useState("data");
@@ -81,9 +107,9 @@ export default function Agendamento(){
         }
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         carregarAgendamentos();
-    }, [filtro, dataSelecionada]);
+    }, [filtro, dataSelecionada]);*/
 
     async function handleExcluir(){
 
@@ -212,7 +238,7 @@ export default function Agendamento(){
                                     </span>
 
                                     <span>
-                                        <FaCalendarAlt className="icone" />
+                                        <MdDesignServices className="icone" />
                                         {agendamento.servicoNome}
                                     </span>
 

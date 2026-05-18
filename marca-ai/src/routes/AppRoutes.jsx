@@ -13,14 +13,12 @@ import ServiceForm from "../pages/servicos/ServiceForm.jsx";
 import Horario from "../pages/horarios/Horario.jsx";
 import HorarioForm from "../pages/horarios/HorarioForm.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
-
 import Perfil from "../pages/perfil/Perfil.jsx";
 import PerfilForm from "../pages/perfil/PerfilForm.jsx";
 import AlterarSenhaPerfil from "../pages/perfil/AlterarSenhaPerfil.jsx";
 import Agendamentos from "../pages/agendamentos/Agendamento.jsx";
 import Notificacoes from "../pages/notificacoes/Notificacoes.jsx";
-
-
+import Cliente from "../pages/clientes/Cliente.jsx";
 
 export default function AppRoutes() {
     return (
@@ -50,6 +48,7 @@ export default function AppRoutes() {
                 <Route path="/criar-servico" element={<ServiceForm />} />
                 <Route path="/agendamentos" element={<Agendamentos />} />
                 <Route path="/notificacoes" element={<Notificacoes />} />
+                <Route path="/clientes" element={<Cliente />} />
             </Route>
         </Routes>
     );
