@@ -36,6 +36,8 @@ export function AuthProvider({ children }) {
     function logout() {
         setUser(null);
         localStorage.removeItem("usuario");
+        localStorage.removeItem("token");
+        localStorage.removeItem("adminId");
     }
 
     return (

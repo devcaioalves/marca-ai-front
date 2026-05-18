@@ -2,6 +2,7 @@ import "../../styles/sidebar.css";
 import logo from "../../assets/logo-salão-trasparente.png";
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 import {
     FaHome,
@@ -24,6 +25,7 @@ export default function Sidebar(){
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [perfilOpen, setPerfilOpen] = useState(false);
+    const { logout } = useAuth();
 
     const sidebarPopupRef = useRef(null);
 
@@ -47,6 +49,12 @@ export default function Sidebar(){
     };
 
 }, []);
+
+    function handleLogout(){
+        logout();
+        setMenuOpen(false);
+        setPerfilOpen(false);
+    }
 
     return(
         <section className="sidebar-container">
@@ -186,10 +194,8 @@ export default function Sidebar(){
                         </Link>
 
                         <Link
-                            to="/logout"
-                            onClick={() => {
-                                setMenuOpen(false);
-                                setPerfilOpen(!perfilOpen);
+                            to="/"
+                            onClick={() => {handleLogout();
                             }}
                         >
                             <FaSignOutAlt className="icon-sidebar" />
