@@ -11,17 +11,7 @@ import { buscarAdmin } from "../../services/perfilAdminService";
 
 export default function Perfil(){
 
-    const [admin, setAdmin] = useState({
-        nome: "",
-        telefone: "",
-        email: "",
-        endereco: {
-            rua: "",
-            numero: "",
-            bairro: "",
-            cep: ""
-        }
-    });
+    const [admin, setAdmin] = useState(null);
     
     const navigate = useNavigate();
 
@@ -33,7 +23,7 @@ export default function Perfil(){
         }catch(error){
             const mensagem =
                 error.response?.data?.message ||
-                "Erro ao carregar Usuário!";
+                "Erro ao carregar usuário!";
             toast.error(mensagem);
         }
     }
@@ -51,6 +41,7 @@ export default function Perfil(){
         }>
             <div className="perfil-container">
 
+            {admin ? (
                 <CardBase
                     className="card-perfil"
                     titulo="Dados pessoais"
@@ -73,7 +64,6 @@ export default function Perfil(){
                     }
                 >
                     <div className="card-info card-info-perfil">
-
                         <div className="info-pessoais">
                             <span>
                                 <div className="icone-tela-perfil">
@@ -126,9 +116,16 @@ export default function Perfil(){
                                 <strong>CEP:</strong> {admin.endereco.cep}
                             </span>
                         </div>
+                        
                     </div>
-                    
                 </CardBase>
+            ) : (
+                <div className="sem-informacao">
+                    <span>
+                        Não há usuário cadastrado no momento!
+                    </span>
+                </div>
+            )}
             </div>
         </Layout>
     );

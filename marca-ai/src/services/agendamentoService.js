@@ -13,7 +13,7 @@ export function listarPorData(data){
 }
 
 export function realizarAgendamento(id, data){
-    return api.put(`/api/agendamentos/realizar-agendamento/${id}`);
+    return api.put(`/api/agendamentos/realizar-agendamento/${id}`, data);
 }
 
 export function cancelar(id){

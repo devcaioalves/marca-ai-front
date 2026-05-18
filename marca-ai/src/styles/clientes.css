@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.card-clientes{
+    width: 85%;
+    margin: auto;
+}
+
+.filtro p.filtro-clientes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-clientes{
+    display: flex;
+    flex-direction: column;
+}
+
+.info-clientes span{
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.info-clientes-telefone{
+    margin-top: 10px;
+}
+
+.info-clientes strong{
+    color: var(--dourado-principal);
+    white-space: nowrap;
+    font-size: 1.1em;
+}
+
+.icone-clientes{
+    margin-right: 10px;
+}
+
+@media (max-width: 1024px) {
+    .card-clientes{
+        width: 100%;
+        
+    }
+
+    .info-clientes strong{
+        font-size: 1em;
+    }
+
+    .info-clientes span{
+        font-size: 0.85em;
+    }
+}
+
