@@ -23,7 +23,7 @@ import {
 
 import { toast } from "react-toastify";
 
-import "../../styles/horarios.css";
+import "../../styles/agendamentoPage.css";
 
 export default function Agendamento(){
 

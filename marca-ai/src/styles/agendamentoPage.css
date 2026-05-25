@@ -1,41 +1,52 @@
 @charset "UTF-8";
 
-.busca-horario{
+/* ===== TOPO DOS FILTROS ===== */
+
+.painel-agenda-topo{
+    display: flex;
     flex-direction: row-reverse;
 }
 
-.filtro-data{
+.seletor-dia-agenda{
     margin-top: 20px;
     margin-left: 20px;
 }
 
-.filtro-data input{
+.seletor-dia-agenda input{
     border: 1px solid var(--dourado-principal);
     border-radius: 5px;
     background-color: transparent;
+
     color: var(--cinza-texto);
+
     text-align: center;
+
     font-size: 0.9em;
     font-family: var(--font-subtitulos);
+
     padding: 8px 12px;
 }
 
-.filtro-data input::-webkit-calendar-picker-indicator{
+.seletor-dia-agenda input::-webkit-calendar-picker-indicator{
     cursor: pointer;
     filter: invert(1);
 }
 
-.agendamentos-container{
+/* ===== CONTAINER ===== */
+
+.lista-agendamentos{
     width: 100%;
 }
 
-.card-info{
+/* ===== INFORMAÇÕES DOS CARDS ===== */
+
+.detalhes-agendamento{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.card-info span{
+.item-detalhe{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -46,23 +57,25 @@
     font-size: 0.9rem;
 }
 
-.icone{
+.icone-detalhe{
     color: var(--dourado-principal);
 }
 
+/* ===== RESPONSIVIDADE ===== */
+
 @media (max-width: 1024px){
 
-    .busca-horario{
+    .painel-agenda-topo{
         display: flex;
         justify-content: center;
         gap: 30px;
     }
 
-    .filtro-data{
+    .seletor-dia-agenda{
         margin-left: 0;
     }
 
-    .filtro-data input{
+    .seletor-dia-agenda input{
         font-size: 0.85em;
         padding: 7px 10px 7px 8px;
     }
@@ -70,7 +83,7 @@
 
 @media (max-width: 768px){
 
-    .busca-horario{
+    .painel-agenda-topo{
         flex-direction: column-reverse;
         gap: 15px;
         align-items: stretch;
@@ -81,16 +94,16 @@
         justify-content: center;
     }
 
-    .filtro-data{
+    .seletor-dia-agenda{
         width: 100%;
         margin-top: 0;
     }
 
-    .filtro-data input{
+    .seletor-dia-agenda input{
         width: 100%;
     }
 
-    .card-info span{
+    .item-detalhe{
         font-size: 0.8rem;
     }
 }
