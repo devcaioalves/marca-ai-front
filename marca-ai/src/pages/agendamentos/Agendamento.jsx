@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import HeaderCommon from "../../components/common/HeaderCommon";
 import Layout from "../../components/layout/Layout";
-import { useNavigate } from "react-router-dom";
 
 import {
     FaClock,
-    FaCalendarAlt,
-    FaEdit,
     FaTrash,
     FaUser,
 } from "react-icons/fa";
@@ -26,36 +23,12 @@ import {
 
 import { toast } from "react-toastify";
 
-import "../../styles/agendamentoPage.css";
+import "../../styles/horarios.css";
 
 export default function Agendamento(){
 
-    const navigate = useNavigate();
-
     // LISTA DE AGENDAMENTOS
-    const [agendamentos, setAgendamentos] = useState([
-        {
-            id: 1,
-            data: "2026-05-18",
-            horaInicio: "08:00",
-            clienteNome: "Maria Clara",
-            servicoNome: "Corte feminino"
-        },
-        {
-            id: 2,
-            data: "2026-05-18",
-            horaInicio: "10:30",
-            clienteNome: "João Pedro",
-            servicoNome: "Barba"
-        },
-        {
-            id: 3,
-            data: "2026-05-18",
-            horaInicio: "14:00",
-            clienteNome: "Ana Beatriz",
-            servicoNome: "Escova"
-        }
-    ]);
+    const [agendamentos, setAgendamentos] = useState([]);
 
     // FILTRO
     const [filtro, setFiltro] = useState("data");
@@ -86,8 +59,11 @@ export default function Agendamento(){
             let response;
 
             if(filtro === "todos"){
+
                 response = await listarTodos();
+
             }else{
+
                 response = await listarPorData(
                     formatarData(dataSelecionada)
                 );
@@ -97,7 +73,15 @@ export default function Agendamento(){
 
         }catch(error){
 
-            setAgendamentos([]);
+            // QUANDO NÃO HOUVER AGENDAMENTOS
+            if(error.response?.status === 404){
+
+                toast.info(
+                    "Não há agendamentos cadastrados nessa data."
+                );
+
+                return;
+            }
 
             const mensagem =
                 error.response?.data?.message ||
@@ -107,9 +91,9 @@ export default function Agendamento(){
         }
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         carregarAgendamentos();
-    }, [filtro, dataSelecionada]);*/
+    }, [filtro, dataSelecionada]);
 
     async function handleExcluir(){
 
@@ -200,25 +184,13 @@ export default function Agendamento(){
                                     <div className="botoes">
 
                                         <button
-                                            className="btn-editar"
-                                            onClick={() =>
-                                                navigate(
-                                                    `/atualizar-agendamento/${agendamento.id}`
-                                                )
-                                            }
-                                        >
-                                            <FaEdit className="icone-editar" />
-                                            Editar
-                                        </button>
-
-                                        <button
                                             className="btn-excluir"
                                             onClick={() =>
                                                 abrirModalExcluir(agendamento)
                                             }
                                         >
                                             <FaTrash className="icone-excluir" />
-                                            Excluir
+                                            Cancelar
                                         </button>
 
                                     </div>
@@ -264,8 +236,8 @@ export default function Agendamento(){
 
                 <ModalConfirmacao
                     aberto={modalAberto}
-                    titulo="Excluir agendamento"
-                    mensagem={`Deseja excluir o agendamento do dia ${formatarData(agendamentoSelecionado?.data)}?`}
+                    titulo="Cancelar agendamento"
+                    mensagem={`Deseja cancelar o agendamento do dia ${formatarData(agendamentoSelecionado?.data)}?`}
                     onConfirm={handleExcluir}
                     onCancel={() => setModalAberto(false)}
                 />

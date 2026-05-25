@@ -1,16 +1,16 @@
 import { api } from "./api";
 
-// LISTAR NOTIFICAÇÕES DE AGENDAMENTOS
+// LISTAR TODAS NOTIFICAÇÕES DE AGENDAMENTOS
 export function listarNotificacaoAgendamento(){
     return api.get(
-        "/api/notificacoes/listar-notificacao-agendamento/"
+        "/api/notificacoes/listar-notificacoes-agendamentos"
     );
 }
 
 // LISTAR NOTIFICAÇÕES DE STATUS
-export function listarNotificacaoStatus(){
+export function listarNotificacaoStatus(status){
     return api.get(
-        "/api/notificacoes/listar-notificacao-status/"
+         `/api/notificacoes/listar-notificacao-status/${status}`
     );
 }
 

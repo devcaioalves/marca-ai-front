@@ -4,20 +4,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../styles/login.css";
-import bg from "../../assets/background.jpg";
 
 export default function RecebeCodigo() {
     const [token, setToken] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Se o token vier pela URL (ex: /redefinir?token=abc123), já preenche o campo
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const urlToken = params.get("token");
-        if (urlToken) {
-            setToken(urlToken);
-        }
+        if (urlToken) setToken(urlToken);
     }, [location]);
 
     const handleSubmit = async (e) => {
@@ -29,34 +25,20 @@ export default function RecebeCodigo() {
         }
 
         try {
-            const payload = { token };
-
             const response = await axios.post(
                 "http://localhost:8080/api/recuperarsenha/validar-token",
-                payload
+                { token }
             );
-
-            toast.success(response.data); // "Token válido."
-            // Passa o token para a próxima página
+            toast.success(response.data);
             navigate(`/alterar-senha?token=${token}`);
-
         } catch (error) {
-            if (error.response) {
-                toast.error(error.response.data || "Token inválido ou expirado.");
-            } else {
-                toast.error("Erro de conexão com o servidor.");
-            }
+            toast.error(error.response?.data || "Token inválido ou expirado.");
         }
     };
 
     return (
-        <div
-            className="login-container"
-            style={{
-                backgroundImage: `url(${bg})`,
-            }}
-        >
-            <div className="overlay"></div>
+        <div className="login-container">
+            <div className="overlay" />
 
             <div className="content fade-in">
                 <h2 className="form-title">Informe o código recebido em seu E-Mail</h2>
@@ -66,7 +48,6 @@ export default function RecebeCodigo() {
                         <div className="input-group">
                             <input
                                 type="text"
-                                className="input"
                                 placeholder="Informe o código"
                                 value={token}
                                 onChange={(e) => setToken(e.target.value)}
@@ -79,11 +60,7 @@ export default function RecebeCodigo() {
                                 Enviar Código
                             </button>
 
-                            <button
-                                type="button"
-                                className="btn-mini btn-golden"
-                                onClick={() => navigate("/login")}
-                            >
+                            <button type="button" className="btn-mini btn-golden" onClick={() => navigate("/login")}>
                                 Voltar
                             </button>
                         </div>

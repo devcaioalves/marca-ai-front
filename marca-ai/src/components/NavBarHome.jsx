@@ -1,4 +1,4 @@
-import logo from "../assets/logo-salão-trasparente.png";
+import logo from "../assets/logo-salao-trasparente.png";
 import { Link } from "react-router-dom";
 
 import "../styles/navBarHome.css";

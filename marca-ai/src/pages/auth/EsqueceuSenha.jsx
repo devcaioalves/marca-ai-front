@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../styles/login.css";
-import bg from "../../assets/background.jpg";
 
 export default function EsqueceuSenha() {
     const [email, setEmail] = useState("");
@@ -19,40 +18,30 @@ export default function EsqueceuSenha() {
         }
 
         try {
-            const payload = { email };
-
             const response = await axios.post(
                 "http://localhost:8080/api/recuperarsenha/esqueci-senha",
-                payload
+                { email }
             );
 
             if (response.data.includes("Usuário não encontrado")) {
                 toast.error("Admin não encontrado.");
-                return; // não navega
+                return;
             }
 
             toast.success(response.data);
             navigate("/receber-codigo");
-
         } catch (error) {
-            if (error.response && error.response.status === 404) {
+            if (error.response?.status === 404) {
                 toast.error("Admin não encontrado.");
             } else {
                 toast.error("Erro ao solicitar redefinição.");
             }
         }
-
     };
 
     return (
-        <div
-            className="login-container"
-            style={{
-                backgroundImage: `url(${bg})`,
-            }}
-        >
-            {/* overlay escuro */}
-            <div className="overlay"></div>
+        <div className="login-container">
+            <div className="overlay" />
 
             <div className="content fade-in">
                 <h2 className="form-title">Recuperar Senha</h2>
@@ -62,7 +51,6 @@ export default function EsqueceuSenha() {
                         <div className="input-group">
                             <input
                                 type="text"
-                                className="input"
                                 placeholder="Informe seu e-mail"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -75,11 +63,7 @@ export default function EsqueceuSenha() {
                                 Solicitar código
                             </button>
 
-                            <button
-                                type="button"
-                                className="btn-mini btn-golden"
-                                onClick={() => navigate("/login")}
-                            >
+                            <button type="button" className="btn-mini btn-golden" onClick={() => navigate("/login")}>
                                 Voltar
                             </button>
                         </div>

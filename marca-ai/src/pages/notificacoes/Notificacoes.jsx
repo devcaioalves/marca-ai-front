@@ -22,9 +22,14 @@ import "../../styles/notificacoes.css";
 
 export default function Notificacoes(){
 
-    const [filtro, setFiltro] = useState("agendamentos");
+    const [filtro, setFiltro] =
+        useState("agendamentos");
 
-    const [notificacoes, setNotificacoes] = useState([]);
+    const [statusSelecionado, setStatusSelecionado] =
+        useState("LIDO");
+
+    const [notificacoes, setNotificacoes] =
+        useState([]);
 
     async function carregarNotificacoes(){
 
@@ -32,19 +37,46 @@ export default function Notificacoes(){
 
             let response;
 
+            // AGENDAMENTOS
             if(filtro === "agendamentos"){
+
                 response =
                     await listarNotificacaoAgendamento();
+
             }else{
+
+                // STATUS
                 response =
-                    await listarNotificacaoStatus();
+                    await listarNotificacaoStatus(
+                        statusSelecionado
+                    );
             }
 
-            setNotificacoes(response.data);
+            const dados = response.data || [];
+
+            setNotificacoes(dados);
+
+            // LISTA VAZIA
+            if(dados.length === 0){
+
+                toast.info(
+                    "Nenhuma notificação encontrada."
+                );
+            }
 
         }catch(error){
 
             setNotificacoes([]);
+
+            // NOT FOUND
+            if(error.response?.status === 404){
+
+                toast.info(
+                    "Nenhuma notificação encontrada."
+                );
+
+                return;
+            }
 
             const mensagem =
                 error.response?.data?.message ||
@@ -55,8 +87,10 @@ export default function Notificacoes(){
     }
 
     useEffect(() => {
+
         carregarNotificacoes();
-    }, [filtro]);
+
+    }, [filtro, statusSelecionado]);
 
     async function handleMarcarComoLida(id){
 
@@ -91,7 +125,7 @@ export default function Notificacoes(){
         >
             <div className="notificacoes-container">
 
-                {/* FILTRO */}
+                {/* FILTROS */}
 
                 <div className="filtro-notificacao">
 
@@ -122,6 +156,41 @@ export default function Notificacoes(){
                     </p>
 
                 </div>
+
+                {/* FILTRO STATUS */}
+
+                {filtro === "status" && (
+
+                    <div className="status-opcoes">
+
+                        <button
+                            className={
+                                statusSelecionado === "LIDO"
+                                    ? "ativo"
+                                    : ""
+                            }
+                            onClick={() =>
+                                setStatusSelecionado("LIDO")
+                            }
+                        >
+                            LIDO
+                        </button>
+
+                        <button
+                            className={
+                                statusSelecionado === "ENVIADO"
+                                    ? "ativo"
+                                    : ""
+                            }
+                            onClick={() =>
+                                setStatusSelecionado("ENVIADO")
+                            }
+                        >
+                            ENVIADO
+                        </button>
+
+                    </div>
+                )}
 
                 {/* LISTA */}
 

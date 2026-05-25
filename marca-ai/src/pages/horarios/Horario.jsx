@@ -51,10 +51,23 @@ export default function Horario(){
             setHorarios(response.data);
 
         }catch (error){
+
             setHorarios([]);
+
+            // QUANDO NÃO EXISTIREM HORÁRIOS
+            if(error.response?.status === 404){
+
+                toast.info(
+                    "Não há horários cadastrados nessa data."
+                );
+
+                return;
+            }
+
             const mensagem =
                 error.response?.data?.message ||
                 "Erro ao carregar horários!";
+
             toast.error(mensagem);
         }
     }

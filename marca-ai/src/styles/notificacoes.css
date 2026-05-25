@@ -121,6 +121,54 @@
 }
 
 /* ========================= */
+/* FILTRO STATUS */
+/* ========================= */
+
+.status-opcoes{
+
+    display: flex;
+
+    gap: 12px;
+
+    margin: 18px 0 24px 18px;
+}
+
+.status-opcoes button{
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #1A1A1A;
+
+    color: var(--cinza-claro);
+
+    font-family: var(--font-subtitulos);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.status-opcoes button:hover{
+
+    border-color: var(--dourado-principal);
+
+    color: var(--dourado-principal);
+}
+
+.status-opcoes .ativo{
+
+    background: rgba(255, 215, 0, 0.12);
+
+    border-color: var(--dourado-principal);
+
+    color: var(--dourado-principal);
+}
+
+/* ========================= */
 /* RESPONSIVIDADE */
 /* ========================= */
 
@@ -137,4 +185,19 @@
 
         justify-content: center;
     }
+
+    .status-opcoes{
+
+        margin-left: 0;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .status-opcoes button{
+
+        width: 100%;
+    }
+
 }

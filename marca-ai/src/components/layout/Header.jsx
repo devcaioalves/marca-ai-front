@@ -11,6 +11,10 @@ import {
     useRef
 } from "react";
 
+import {
+    listarNotificacaoAgendamento
+} from "../../services/notificacoesService";
+
 export default function Header(){
 
     const data = new Date();
@@ -29,13 +33,18 @@ export default function Header(){
         weekday: "long"
     });
 
-    // DEPOIS TROCAR PELA API
-    const temNotificacao = true;
+    // NOTIFICAÇÕES
+    const [notificacoes, setNotificacoes] =
+        useState([]);
+
+    const temNotificacao =
+        notificacoes.length > 0;
 
     const [notificacaoOpen, setNotificacaoOpen] =
         useState(false);
 
-    const notificacaoRef = useRef(null);
+    const notificacaoRef =
+        useRef(null);
 
     // FECHAR AO CLICAR FORA
     useEffect(() => {
@@ -65,6 +74,35 @@ export default function Header(){
 
     }, []);
 
+    // CARREGAR NOTIFICAÇÕES
+    useEffect(() => {
+
+        async function carregarNotificacoes(){
+
+            try{
+
+                const response =
+                    await listarNotificacaoAgendamento();
+
+                setNotificacoes(
+                    response.data || []
+                );
+
+            }catch(error){
+
+                console.error(
+                    "Erro ao carregar notificações",
+                    error
+                );
+
+                setNotificacoes([]);
+            }
+        }
+
+        carregarNotificacoes();
+
+    }, []);
+
     return(
         <>
             <div className="header-left">
@@ -91,7 +129,7 @@ export default function Header(){
 
                 {/* BOTÃO NOTIFICAÇÃO */}
 
-                <Link
+                <div
                     className="notificacao-link"
                     onClick={() =>
                         setNotificacaoOpen(!notificacaoOpen)
@@ -102,7 +140,7 @@ export default function Header(){
                     {temNotificacao && (
                         <span className="badge"></span>
                     )}
-                </Link>
+                </div>
 
                 {/* DATA */}
 
@@ -120,41 +158,43 @@ export default function Header(){
 
                     <div className="notificacao-popup">
 
-                        <div className="notificacao-item">
+                        {notificacoes.length > 0 ? (
 
-                            <strong>
-                                Novo agendamento
-                            </strong>
+                            notificacoes
+                                .slice(0, 3)
+                                .map((notificacao) => (
 
-                            <span>
-                                Maria Silva agendou às 14:00
-                            </span>
+                                    <div
+                                        key={notificacao.id}
+                                        className="notificacao-item"
+                                    >
 
-                        </div>
+                                        <strong>
+                                            {
+                                                notificacao.titulo ||
+                                                "Notificação"
+                                            }
+                                        </strong>
 
-                        <div className="notificacao-item">
+                                        <span>
+                                            {
+                                                notificacao.mensagem
+                                            }
+                                        </span>
 
-                            <strong>
-                                Horário remarcado
-                            </strong>
+                                    </div>
+                                ))
 
-                            <span>
-                                Ana Souza alterou o horário
-                            </span>
+                        ) : (
 
-                        </div>
+                            <div className="notificacao-item">
 
-                        <div className="notificacao-item">
+                                <span>
+                                    Nenhuma notificação encontrada.
+                                </span>
 
-                            <strong>
-                                Pagamento confirmado
-                            </strong>
-
-                            <span>
-                                Pagamento recebido hoje
-                            </span>
-
-                        </div>
+                            </div>
+                        )}
 
                         <Link
                             to="/notificacoes"

@@ -7,6 +7,10 @@ html, body {
     box-sizing: border-box;
     overflow-x: hidden; /* REMOVE A ROLAGEM HORIZONTAL */
     
+    width: 100%;
+    min-height: 100%;
+
+    background: #0f0f0f;
 
 }
 

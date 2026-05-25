@@ -1,0 +1,55 @@
+/* ============================================================
+   LOADING SCREEN
+   Cobre qualquer flash de renderização entre rotas.
+   Usa opacity + transition para fade-in/out suave.
+   ============================================================ */
+@charset "UTF-8";
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(135deg, #0f0f0f, #161616);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999999;
+
+    /* Transição aplicada sempre — tanto na entrada quanto na saída */
+    transition: opacity 0.35s ease;
+}
+
+/* Estado visível (entrada) */
+.loading-screen.ls-enter {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Estado invisível (saída) */
+.loading-screen.ls-exit {
+    opacity: 0;
+    pointer-events: none; /* não bloqueia cliques enquanto some */
+}
+
+/* ============================================================
+   SPINNER
+   ============================================================ */
+.loading-spinner {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-top: 3px solid #d4af37;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

@@ -36,11 +36,37 @@ export default function Service() {
     async function carregarServicos() {
 
         try {
+
             const response = await listar();
-            setServicos(response.data);
+
+            const dados = response.data || [];
+
+            setServicos(dados);
+
+            // LISTA VAZIA
+            if(dados.length === 0){
+
+                toast.info(
+                    "Não há serviços cadastrados."
+                );
+            }
+
         } catch (error) {
+
+            // NOT FOUND
+            if(error.response?.status === 404){
+
+                toast.info(
+                    "Não há serviços cadastrados."
+                );
+
+                return;
+            }
+
             const mensagem =
-                error.response?.data?.message || "Erro ao carregar serviços!";
+                error.response?.data?.message ||
+                "Erro ao carregar serviços!";
+
             toast.error(mensagem);
         }
     }
