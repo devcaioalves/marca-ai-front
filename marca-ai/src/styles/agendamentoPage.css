@@ -32,12 +32,6 @@
     filter: invert(1);
 }
 
-/* ===== CONTAINER ===== */
-
-.lista-agendamentos{
-    width: 100%;
-}
-
 /* ===== INFORMAÇÕES DOS CARDS ===== */
 
 .detalhes-agendamento{

@@ -13,8 +13,11 @@ export function AuthProvider({ children }) {
 
         if (usuarioSalvo) {
             const parsed = JSON.parse(usuarioSalvo);
-            // user recebe apenas os dados do usuário (não o token)
-            setUser(parsed.usuario);
+
+            if(parsed.token){
+                // user recebe apenas os dados do usuário (não o token)
+                setUser(parsed.usuario);
+            }
         }
 
         setLoading(false);
@@ -36,6 +39,8 @@ export function AuthProvider({ children }) {
     function logout() {
         setUser(null);
         localStorage.removeItem("usuario");
+        localStorage.removeItem("token");
+        localStorage.removeItem("adminId");
     }
 
     return (
