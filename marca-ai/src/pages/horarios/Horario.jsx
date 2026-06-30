@@ -46,6 +46,7 @@ export default function Horario(){
                 response = await listarTodos();
             }else{
                 response = await listarPordata(formatarData(dataSelecionada));
+                console.log(response.data);
             }
 
             setHorarios(response.data);

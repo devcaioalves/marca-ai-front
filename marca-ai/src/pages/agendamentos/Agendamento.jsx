@@ -6,6 +6,7 @@ import {
     FaClock,
     FaTrash,
     FaUser,
+    FaClipboardCheck
 } from "react-icons/fa";
 
 import {
@@ -18,7 +19,8 @@ import ModalConfirmacao from "../../components/common/ModalConfirmacao";
 import {
     cancelar,
     listarPorData,
-    listarTodos
+    listarTodos,
+    realizar
 } from "../../services/agendamentoService";
 
 import { toast } from "react-toastify";
@@ -124,6 +126,21 @@ export default function Agendamento(){
         setModalAberto(true);
     }
 
+    async function marcarComoConcluido(agendamento){
+        try{
+            await realizar(agendamento.id);
+            toast.success("Agendamento marcado como realizado!");
+            carregarAgendamentos();
+
+        }catch(error){
+            const mensagem =
+                error.response?.data?.message ||
+                "Erro ao marcar agendamento como realizado!";
+
+            toast.error(mensagem);
+        }
+    }
+
     return(
         <Layout
             header={
@@ -181,19 +198,45 @@ export default function Agendamento(){
                                 key={agendamento.id}
                                 titulo={formatarData(agendamento.data)}
                                 acoes={
-                                    <div className="botoes">
+                                    <>
+                                    {(agendamento.statusAgendamento === "AGENDADO" || agendamento.statusAgendamento === "CONFIRMADO" || agendamento.statusAgendamento === "REMARCADO") &&  (
 
-                                        <button
-                                            className="btn-excluir"
-                                            onClick={() =>
-                                                abrirModalExcluir(agendamento)
-                                            }
-                                        >
-                                            <FaTrash className="icone-excluir" />
-                                            Cancelar
-                                        </button>
+                                        <div className="botoes">
 
-                                    </div>
+                                            <button
+                                                className="btn-excluir"
+                                                onClick={() =>
+                                                    abrirModalExcluir(agendamento)
+                                                }
+                                            >
+                                                <FaTrash className="icone-excluir" />
+                                                Cancelar
+                                            </button>
+
+                                            <button
+                                                className="btn-editar"
+                                                onClick={() =>
+                                                    marcarComoConcluido(agendamento)
+                                                }
+                                            >
+                                                <FaClipboardCheck className="icone-editar" />
+                                                Realizar
+                                            </button>
+                                        </div>
+                                    )}
+
+                                    {agendamento.statusAgendamento === "REALIZADO" && (
+                                        <span className="status-info realizado">
+                                            Agendamento realizado
+                                        </span>
+                                    )}
+                                    
+                                    {agendamento.statusAgendamento === "CANCELADO" && (
+                                        <span className="status-info cancelado">
+                                            Agendamento cancelado
+                                        </span>
+                                    )}
+                                    </>
                                 }
                             >
 

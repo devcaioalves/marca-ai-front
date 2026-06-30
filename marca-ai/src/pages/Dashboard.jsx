@@ -82,6 +82,10 @@ export default function Dashboard() {
                     ? responseClientes.value.data || []
                     : [];
 
+            const servicos = responseServicos.status === "fulfilled"
+                ? responseServicos.value.data || []
+                : [];
+
             [
                 responseAgendamentos,
                 responseClientes,
@@ -94,6 +98,48 @@ export default function Dashboard() {
                 ) {
                     toast.error("Erro ao carregar informações do dashboard.");
                 }
+            });
+
+            const agora = new Date();
+
+            const proximoAgendamento = [...agendamentosHoje]
+                .filter((agendamento) => {
+                    if(agendamento.statusAgendamento === "CANCELADO") return false;
+
+                    const dataHora = new Date(`${agendamento.data}T${agendamento.horaInicio}`);
+                    return dataHora > agora;
+                    })
+                    .sort((a, b) =>
+                        new Date(`${a.data}T${a.horaInicio}`) -
+                        new Date(`${b.data}T${b.horaInicio}`)
+                    )[0];
+
+            const faturamentoHoje = agendamentosHoje.reduce((total, agendamento) => {
+                if(agendamento.statusAgendamento === "CANCELADO"){
+                    return total;
+                }
+
+                const servico = servicos.find((servico) => servico.id === agendamento.servicoId);
+                
+                return total + (servico?.valor || 0);
+            }, 0);
+
+            setDados({
+                agendamentosHoje: agendamentosHoje.length,
+                proximoHorario: proximoAgendamento ? {
+                    hora: proximoAgendamento.horaInicio,
+                    tempoRestante: calcularTempoRestante(
+                        proximoAgendamento.data,
+                        proximoAgendamento.horaInicio
+                    )
+                }
+                : {
+                    hora: "--",
+                    tempoRestante: "--"
+                },
+
+                clientesHoje: clientes.length,
+                faturamentoHoje
             });
 
             setAgendamentos(agendamentosHoje);

@@ -19,3 +19,7 @@ export function realizarAgendamento(id, data){
 export function cancelar(id){
     return api.delete(`/api/agendamentos/cancelar-agendamento/${id}`);
 }
+
+export function realizar(id){
+    return api.patch(`/api/agendamentos/realizar-agendamento/${id}`);
+}

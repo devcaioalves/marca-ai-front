@@ -112,6 +112,11 @@
     font-weight: inherit;
 }
 
+.status.agendado{
+    background: rgba(255, 255, 255, 0.4);
+    color: var(--branco);
+}
+
 .status.confirmado{
     background: rgba(255, 215, 0, 0.15);
     color: var(--dourado);
