@@ -253,6 +253,11 @@ export default function Agendamento(){
                                     </span>
 
                                     <span>
+                                        <FaUser className="icone" />
+                                        {agendamento.telefoneCliente}
+                                    </span>
+
+                                    <span>
                                         <MdDesignServices className="icone" />
                                         {agendamento.servicoNome}
                                     </span>
